@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Test", "Gladiator
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Core", "Gladiator.Core\Gladiator.Core.csproj", "{E7C25E76-3F16-4D93-80FF-CEF2B388B397}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Data", "Gladiator.Infrastructure.Data\Gladiator.Infrastructure.Data.csproj", "{978B3B7B-48DF-4442-8F25-6E2BB0FF29AE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure", "Gladiator.Infrastructure\Gladiator.Infrastructure.csproj", "{978B3B7B-48DF-4442-8F25-6E2BB0FF29AE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Application", "Gladiator.Application\Gladiator.Application.csproj", "{6EBD52A7-692A-4946-B81D-573CA4EBC8C3}"
 EndProject
