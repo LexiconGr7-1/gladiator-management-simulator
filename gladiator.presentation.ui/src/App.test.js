@@ -1,3 +1,3 @@
-﻿test("routes will be tested later", () => {
+﻿test("no test", () => {
   expect(true);
 });

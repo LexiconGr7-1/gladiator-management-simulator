@@ -1,13 +1,12 @@
-import { Route, Routes } from "react-router-dom";
-
-import LandingPage from "./pages/LandingPage";
+import { BrowserRouter } from "react-router-dom";
+import Views from "./routes/Views";
 
 const App = () => {
-  <div>
-    <Routes>
-      <Route exact path="/" element={<LandingPage />} />
-    </Routes>
-  </div>;
+  return (
+    <BrowserRouter>
+      <Views />
+    </BrowserRouter>
+  );
 };
 
 export default App;
