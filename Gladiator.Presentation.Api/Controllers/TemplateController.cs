@@ -3,7 +3,7 @@
 namespace Gladiator.Presentation.Api.Controllers
 {
     [ApiController]
-    [Route("/")]
+    [Route("/api")]
     public class DefaultController : ControllerBase
     {
         private readonly ILogger<DefaultController> _logger;
