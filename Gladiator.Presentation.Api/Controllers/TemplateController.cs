@@ -1,25 +1,22 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 
 namespace Gladiator.Presentation.Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
-    public class TemplateController : ControllerBase
+    [Route("/")]
+    public class DefaultController : ControllerBase
     {
+        private readonly ILogger<DefaultController> _logger;
 
-        private readonly ILogger<TemplateController> _logger;
-
-        public TemplateController(ILogger<TemplateController> logger)
+        public DefaultController(ILogger<DefaultController> logger)
         {
             _logger = logger;
         }
 
         [HttpGet]
-        public string Get()
+        public ActionResult Get()
         {
-            string Test = "test";
-            return Test;
-
+            return Ok();
         }
     }
 }
