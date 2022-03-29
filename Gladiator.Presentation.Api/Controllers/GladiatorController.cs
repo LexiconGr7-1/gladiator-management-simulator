@@ -42,6 +42,7 @@ namespace Gladiator.Presentation.Api.Controllers
 
             return Ok(NewGladiator);
         }
+
         [HttpPut("{id}")]
         public async Task<IActionResult> UpdateGladiator(int id, object gladiator)
         {
@@ -52,6 +53,7 @@ namespace Gladiator.Presentation.Api.Controllers
 
             return Ok(UpdateGladiator);
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteGladiator(int id)
         {
