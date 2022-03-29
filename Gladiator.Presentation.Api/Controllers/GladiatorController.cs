@@ -4,7 +4,7 @@
     namespace Gladiator.Presentation.Api.Controllers
 {
     [ApiController]
-    [Route("api/[Gladiator]")]
+    [Route("api/Gladiator")]
     public class GladiatorController : ControllerBase
     {
         [HttpGet]
