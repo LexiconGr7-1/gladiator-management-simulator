@@ -1,9 +1,12 @@
-import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import Views from "./routes/Views";
 
 const App = () => {
-    return (
-        <div>From App.js</div>    
-    )
-}
+  return (
+    <BrowserRouter>
+      <Views />
+    </BrowserRouter>
+  );
+};
 
-export default App
+export default App;
