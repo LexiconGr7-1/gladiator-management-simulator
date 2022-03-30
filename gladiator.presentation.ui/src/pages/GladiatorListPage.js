@@ -1,54 +1,80 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
+
 const GladiatorListPage = () => {
+    const [isLoading, setIsLoading] = useState(true);
     const [gladiators, setGladiators] = useState([]);
+    const [testData, setTestData] = useState(null);
 
     useEffect(() => {
-        //fetch('https://api.github.com/users/treox')
-        //    .then(res => {
-        //        return res.json();
-        //    })
-        //    .then(data => {
-        //        console.log(data);
-        //        setGladiators(data);
-        //    })
-        //    .catch(err => {
-        //        console.log(err);
-        //    });
+        setIsLoading(true);
+        fetch("https://jsonplaceholder.typicode.com/posts/1")
+            .then((res) => {
+                return res.json();
+            })
+            .then((data) => {
+                setTestData(data);
 
-            setGladiators([{ id:1, name: "Gladiator1" }, { id:2, name: "Gladiator2" }, { id:3, name: "Gladiator3" }, { id:4, name: "Gladiator4" }]);
+                // mock data for real fetch
+                setGladiators([
+                    { id: 1, name: "Gladiator 1" },
+                    { id: 2, name: "Gladiator 2" },
+                    { id: 3, name: "Gladiator 3" },
+                    { id: 4, name: "Gladiator 4" },
+                ]);
+                setIsLoading(false);
+            })
+            .catch((err) => {
+                console.log("fetch error: " + err);
+                setIsLoading(false);
+            });
     }, []);
 
-    console.log(gladiators.map((g) => {return g.name}));
+    if (isLoading) {
+        return <span>Loading...</span>;
+    }
 
     return (
         <div>
+            {console.log(testData)}
             <h2>Gladiator List</h2>
-            <div>
-                {(gladiators.map((gladiator) => (
-                <div key={gladiator.id}>
-                    <span className="col">{gladiator.name}</span>
-                <Link
-                    to="/gladiator-details/" + {gladiator.id}
-                    className="btn btn-secondary m-3 col"
-                >
-                    Details
-                </Link>
 
-                <Link
-                    to="/gladiator-edit"
-                    className="btn btn-secondary m-3 col"
-                >
-                    Edit
-                </Link>
-                <Link
-                    to="/gladiator-delete"
-                    className="btn btn-secondary m-3 col"
-                >
-                    Delete
+            {gladiators &&
+                gladiators.map((gladiator) => (
+                    <div key={gladiator.id} className="mb-3">
+                        <span className="col">{gladiator.name}</span>
+                        <Link
+                            to={"gladiator-details/" + gladiator.id}
+                            className="btn btn-secondary mx-3 col"
+                        >
+                            Details
                         </Link>
-                </div>
-                )))}
+
+                        <Link
+                            to={"/gladiator-edit/" + gladiator.id}
+                            className="btn btn-secondary mx-3 col"
+                        >
+                            Edit
+                        </Link>
+                        <Link
+                            to={"/gladiator-delete/" + gladiator.id}
+                            className="btn btn-secondary mx-3 col"
+                        >
+                            Delete
+                        </Link>
+                    </div>
+                ))}
+
+            {/* just output test data */}
+            <div>
+                <b>Test Data</b>
+                {Object.keys(testData).map((key) => (
+                    <div key={key}>
+                        <label>{key}:</label>
+                        <span>{testData[key]}</span>
+                    </div>
+                ))}
             </div>
         </div>
     );
