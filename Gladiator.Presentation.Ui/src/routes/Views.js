@@ -3,14 +3,18 @@ import { Route, Routes } from "react-router-dom";
 import LandingPage from "../pages/LandingPage";
 import GladiatorListPage from "../pages/GladiatorListPage";
 import NotFound from "../pages/NotFound";
+import GladiatorCreatePage from "../pages/GladiatorCreatePage";
+import GladiatorEditPage from "../pages/GladiatorEditPage";
 
 const Views = () => {
   return (
     <Routes>
-          <Route exact path="/" element={<LandingPage />} />'         
-          <Route index element={<LandingPage />} />
-          <Route exact path="/gladiator-list" element={<GladiatorListPage />} />
-          <Route path="*" element={<NotFound />} />
+      <Route exact path="/" element={<LandingPage />} />
+      <Route exact path="/gladiator-edit" element={<GladiatorEditPage />} />
+      <Route exact path="/gladiator-create" element={<GladiatorCreatePage />} />
+      <Route exact path="/gladiator-list" element={<GladiatorListPage />} />
+      <Route index element={<LandingPage />} />
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 };
