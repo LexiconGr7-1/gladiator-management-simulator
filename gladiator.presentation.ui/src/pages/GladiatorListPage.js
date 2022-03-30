@@ -11,7 +11,6 @@ const GladiatorListPage = () => {
                 >
                     Details
                 </Link>
-
                 <Link
                     to="/gladiator-edit"
                     className="btn btn-secondary m-3 col"
