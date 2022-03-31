@@ -3,10 +3,10 @@ import Header from "./Header";
 import Footer from "./Footer";
 const Layout = () => {
     return (
-        <React.Fragment>
+        <div>
             <Header />
             <Footer />
-        </React.Fragment>
+        </div>
     );
 };
 export default Layout;
