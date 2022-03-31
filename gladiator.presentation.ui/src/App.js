@@ -4,11 +4,11 @@ import Views from "./routes/Views";
 
 const App = () => {
     return (
-        <Layout>
-            <BrowserRouter>
+        <BrowserRouter>
+            <Layout>
                 <Views />
-            </BrowserRouter>
-        </Layout>
+            </Layout>
+        </BrowserRouter>
     );
 };
 
