@@ -5,21 +5,9 @@ const Header = () => {
     return (
         <header>
             <div>
-                <Link
-                    to="/gladiator-create"
-                >
-                    Create Gladiator
-                </Link>
-                <Link
-                    to="/gladiator-edit"
-                >
-                    Edit Gladiator
-                </Link>
-                <Link
-                    to="/gladiator-list"
-                >
-                    Gladiator list
-                </Link>
+                <Link to="/gladiator-create">Create Gladiator</Link>
+                <Link to="/gladiator-edit">Edit Gladiator</Link>
+                <Link to="/gladiator-list">Gladiator list</Link>
             </div>
         </header>
     );
