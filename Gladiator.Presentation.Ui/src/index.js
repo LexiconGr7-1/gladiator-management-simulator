@@ -7,15 +7,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 //import Popper from '@popperjs/core';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
-import Header from './Components/Shared/Header'
-import Footer from './Components/Shared/Footer'
 
 ReactDOM.render(
     <React.StrictMode>
-        <Header />
         <App />
-        <Footer />
-  </React.StrictMode>,
+    </React.StrictMode>,
   document.getElementById("root")
 );
 
