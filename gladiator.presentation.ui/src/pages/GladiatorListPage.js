@@ -1,35 +1,8 @@
-import { useState, useEffect } from "react";
-
 import { Link } from "react-router-dom";
+import useFetch from "../components/useFetch";
 
 const GladiatorListPage = () => {
-    const [isLoading, setIsLoading] = useState(true);
-    const [gladiators, setGladiators] = useState([]);
-    const [testData, setTestData] = useState(null);
-
-    useEffect(() => {
-        setIsLoading(true);
-        fetch("https://jsonplaceholder.typicode.com/posts/1")
-            .then((res) => {
-                return res.json();
-            })
-            .then((data) => {
-                setTestData(data);
-
-                // mock data for real fetch
-                setGladiators([
-                    { id: 1, name: "Gladiator 1" },
-                    { id: 2, name: "Gladiator 2" },
-                    { id: 3, name: "Gladiator 3" },
-                    { id: 4, name: "Gladiator 4" },
-                ]);
-                setIsLoading(false);
-            })
-            .catch((err) => {
-                console.log("fetch error: " + err);
-                setIsLoading(false);
-            });
-    }, []);
+    const { isLoading, data: gladiators, testData } = useFetch("https://jsonplaceholder.typicode.com/posts/1");
 
     if (isLoading) {
         return <span>Loading...</span>;
