@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Gladiator.Core.Entities;
+﻿using Gladiator.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace Gladiator.Infrastructure.ApplicationData.Data

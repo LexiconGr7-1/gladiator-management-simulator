@@ -7,9 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Handlers\CommandHandlers\" />
     <Folder Include="Handlers\QueryHandlers\" />
-    <Folder Include="Mappers\" />
     <Folder Include="Queries\" />
   </ItemGroup>
 
