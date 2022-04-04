@@ -1,90 +1,80 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-
+using Gladiator.Presentation.Models;
 namespace Gladiator.Presentation.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class GladiatorController : ControllerBase
     {
-        public class Gladiator
-        {
-            [JsonProperty("id")]
-            public int Id { get; set; }
-            [JsonProperty("name")]
-            public string Name { get; set; }
-            [JsonProperty("health")]
-            public double Health { get; set; }
-            [JsonProperty("strength")]
-            public double Strength { get; set; }
-        }
+       
 
-        private readonly List<Gladiator> gladiators = new()
+        private readonly List<Gladiator.Presentation.Models.Gladiator> gladiators = new()
         {
-            new Gladiator
+            new Gladiator.Presentation.Models.Gladiator
             {
                 Name = "Gladiator 1",
                 Id = 1,
                 Strength = 1,
                 Health = 1
             },
-            new Gladiator
+            new Gladiator.Presentation.Models.Gladiator
             {
                 Name = "Gladiator 2",
                 Id = 2,
                 Strength = 2,
                 Health = 2
             },
-            new Gladiator
+            new Gladiator.Presentation.Models.Gladiator
             {
                 Name = "Gladiator 3",
                 Id = 3,
                 Strength = 3,
                 Health = 3
             },
-            new Gladiator
+            new Gladiator.Presentation.Models.Gladiator
             {
                 Name = "Gladiator 4",
                 Id = 4,
                 Strength = 4,
                 Health = 4
             },
-            new Gladiator
+            new Gladiator.Presentation.Models.Gladiator
             {
                 Name = "Gladiator 5",
                 Id = 5,
                 Strength = 5,
                 Health = 5
             },
-            new Gladiator
+            new Gladiator.Presentation.Models.Gladiator
             {
                 Name = "Gladiator 6",
                 Id = 6,
                 Strength = 6,
                 Health = 6
             },
-            new Gladiator
+            new Gladiator.Presentation.Models.Gladiator
             {
                 Name = "Gladiator 7",
                 Id = 7,
                 Strength = 7,
                 Health = 7
             },
-            new Gladiator
+            new Gladiator.Presentation.Models.Gladiator
             {
                 Name = "Gladiator 8",
                 Id = 8,
                 Strength = 8,
                 Health = 8
             },
-            new Gladiator
+            new Gladiator.Presentation.Models.Gladiator
             {
                 Name = "Gladiator 9",
                 Id = 9,
                 Strength = 9,
                 Health = 9
             },
-            new Gladiator
+            new Gladiator.Presentation.Models.Gladiator
             {
                 Name = "Gladiator 10",
                 Id = 10,
@@ -99,7 +89,7 @@ namespace Gladiator.Presentation.Api.Controllers
             if (id < 1)
                 return BadRequest();
 
-            Gladiator gladiator = gladiators.Find(x => x.Id == id);
+            Models.Gladiator gladiator = gladiators.Find(x => x.Id == id);
 
             string jsonString = JsonConvert.SerializeObject(gladiator);
 
@@ -117,7 +107,7 @@ namespace Gladiator.Presentation.Api.Controllers
 
         // json example {"name": "Addicus","strength": 123,"health": 456}
         [HttpPost]
-        public async Task<IActionResult> CreateGladiator(Gladiator gladiator)
+        public async Task<IActionResult> CreateGladiator(Models.Gladiator gladiator)
         {
             gladiator.Id = (from g in gladiators
                             select g.Id).Max() + 1;
@@ -129,12 +119,12 @@ namespace Gladiator.Presentation.Api.Controllers
 
         // json example {"name": "Addicus","strength": 123,"health": 456}
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdateGladiator(int id, Gladiator gladiator)
+        public async Task<IActionResult> UpdateGladiator(int id, Models.Gladiator gladiator)
         {
             if (id < 1)
                 return BadRequest();
 
-            Gladiator? gladiatorToUpdate = gladiators.FirstOrDefault(g => g.Id == id);
+            Models.Gladiator? gladiatorToUpdate = gladiators.FirstOrDefault(g => g.Id == id);
 
             if (gladiatorToUpdate == null)
                 return BadRequest();
