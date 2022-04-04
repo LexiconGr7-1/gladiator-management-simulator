@@ -4,6 +4,6 @@ import GladiatorDetailsPage from "./GladiatorDetailsPage";
 
 test("renders gladiator details page", () => {
     render(<GladiatorDetailsPage />, { wrapper: BrowserRouter });
-    const linkElement = screen.getByText(/Gladiator/i);
+    const linkElement = screen.getByText(/Back|Loading.../i);
     expect(linkElement).toBeInTheDocument();
 });
