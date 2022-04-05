@@ -82,7 +82,7 @@ namespace Gladiator.Presentation.Api.Controllers
 
         // {"name":"Arena 1 - Updated","schools":[{"id":10,"name":"School 10","playerID":1,"gladiators":[{"id":20,"name":"Gladiator 20","health":1,"strength":1}]}]}
         [HttpPut("{id:int}")]
-        public async Task<IActionResult> UpdatePlayer(int id, Arena arena)
+        public async Task<IActionResult> UpdateArena(int id, Arena arena)
         {
             if (id < 1)
                 return BadRequest();
