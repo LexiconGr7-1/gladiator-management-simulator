@@ -14,6 +14,7 @@ namespace Gladiator.Presentation.Models
         public string Name { get; set; }
         [JsonProperty("playerID")]
         public int PlayerID { get; set; }
+        [JsonProperty("gladiators")]
         public List<Gladiator> Gladiators { get; set; }
     }
 
