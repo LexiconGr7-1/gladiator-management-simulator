@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using System.Linq;
 using System.Collections.Generic;
+using Gladiator.Presentation.Models;
 namespace Gladiator.Presentation.Api.Controllers
 {
 
@@ -9,50 +10,19 @@ namespace Gladiator.Presentation.Api.Controllers
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
-        public class Gladiator
+        
+        
+      
+        static List<Models.Gladiator> gladiators1 = new()
         {
-            [JsonProperty("id")]
-            public int Id { get; set; }
-            [JsonProperty("name")]
-            public string Name { get; set; }
-            [JsonProperty("health")]
-            public double Health { get; set; }
-            [JsonProperty("strength")]
-            public double Strength { get; set; }
-        }
-        public class Player
-        {
-            [JsonProperty("Id")]
-            public int Id { get; set; }
-            [JsonProperty("name")]
-            public string Name { get; set; }
-            [JsonProperty("schools")]
-
-            public List<School> Schools { get; set; }
-            [JsonProperty("gladiators")]
-            public List<Gladiator> Gladiators { get; set; }
-
-        }
-        public class School
-        {
-            [JsonProperty("id")]
-            public int Id { get; set; }
-            [JsonProperty("name")]
-            public string Name { get; set; }
-            [JsonProperty("playerID")]
-            public int PlayerID { get; set; }
-            public List<Gladiator> Gladiators { get; set; }
-        }
-        static List<Gladiator> gladiators1 = new()
-        {
-            new Gladiator
+            new Models.Gladiator
             {
                 Name = "Gladiator 1",
                 Id = 1,
                 Strength = 1,
                 Health = 1
             },
-            new Gladiator
+            new Models.Gladiator
             {
                 Name = "Gladiator 2",
                 Id = 2,
@@ -60,16 +30,16 @@ namespace Gladiator.Presentation.Api.Controllers
                 Health = 2
             },
         };
-        static List<Gladiator> gladiators2 = new()
+        static List<Models.Gladiator> gladiators2 = new()
         {
-            new Gladiator
+            new Models.Gladiator
             {
                 Name = "Gladiator 3",
                 Id = 3,
                 Strength = 3,
                 Health = 3
             },
-            new Gladiator
+            new Models.Gladiator
             {
                 Name = "Gladiator 4",
                 Id = 4,
@@ -116,16 +86,16 @@ namespace Gladiator.Presentation.Api.Controllers
 
         };
 
-        static List<Gladiator> gladiators3 = new()
+        static List<Models.Gladiator> gladiators3 = new()
         {
-            new Gladiator
+            new Models.Gladiator
             {
                 Name = "Gladiator 5",
                 Id = 5,
                 Strength = 5,
                 Health = 5
             },
-            new Gladiator
+            new Models.Gladiator
             {
                 Name = "Gladiator 6",
                 Id = 6,
@@ -133,30 +103,30 @@ namespace Gladiator.Presentation.Api.Controllers
                 Health = 6
             },
         };
-        static List<Gladiator> gladiators4 = new()
+        static List<Models.Gladiator> gladiators4 = new()
         {
-            new Gladiator
+            new Models.Gladiator
             {
                 Name = "Gladiator 7",
                 Id = 7,
                 Strength = 7,
                 Health = 7
             },
-            new Gladiator
+            new Models.Gladiator
             {
                 Name = "Gladiator 8",
                 Id = 8,
                 Strength = 8,
                 Health = 8
             },
-            new Gladiator
+            new Models.Gladiator
             {
                 Name = "Gladiator 9",
                 Id = 9,
                 Strength = 9,
                 Health = 9
             },
-            new Gladiator
+            new Models.Gladiator
             {
                 Name = "Gladiator 10",
                 Id = 10,
@@ -164,7 +134,7 @@ namespace Gladiator.Presentation.Api.Controllers
                 Health = 10
             }
         };
-        static List<Gladiator> gladiators5 = gladiators3.Concat(gladiators4).ToList();
+        static List<Models.Gladiator> gladiators5 = gladiators3.Concat(gladiators4).ToList();
 
         static List<Player> players = new()
         {
@@ -192,9 +162,9 @@ namespace Gladiator.Presentation.Api.Controllers
         };
 
 
-        static List<Gladiator> gladiators6 = new()
+        static List<Models.Gladiator> gladiators6 = new()
         {
-            new Gladiator
+            new Models.Gladiator
             {
                 Name = "Gladiator 11",
                 Id = 11,
@@ -213,7 +183,7 @@ namespace Gladiator.Presentation.Api.Controllers
             },
         };
         static List<School> schools4 = schools1.Concat(schools2).Concat(schools3).Concat(schools7).ToList();
-        static List<Gladiator> gladiators7 = gladiators1.Concat(gladiators2).Concat(gladiators5).Concat(gladiators6).ToList();
+        static List<Models.Gladiator> gladiators7 = gladiators1.Concat(gladiators2).Concat(gladiators5).Concat(gladiators6).ToList();
        
         [HttpGet("{id:int}")]
     public async Task<IActionResult> GetPlayer(int id)
@@ -254,8 +224,8 @@ namespace Gladiator.Presentation.Api.Controllers
             }
             foreach (Player y in players)
             {
-                foreach (Gladiator x in y.Gladiators)
-                    foreach (Gladiator z in player.Gladiators)
+                foreach (Models.Gladiator x in y.Gladiators)
+                    foreach (Models.Gladiator z in player.Gladiators)
                     {
                         if (x.Id == z.Id)
                         { return BadRequest(); }
@@ -267,7 +237,7 @@ namespace Gladiator.Presentation.Api.Controllers
                 
                 { return BadRequest(); } 
             }
-            foreach (Gladiator x in player.Gladiators)
+            foreach (Models.Gladiator x in player.Gladiators)
             {
                  if (gladiators7.FindIndex(g => g.Id == x.Id)<0) 
               
@@ -308,8 +278,8 @@ namespace Gladiator.Presentation.Api.Controllers
             }
             foreach (Player y in players)
             {
-                foreach (Gladiator x in y.Gladiators)
-                    foreach (Gladiator z in player.Gladiators)
+                foreach (Models.Gladiator x in y.Gladiators)
+                    foreach (Models.Gladiator z in player.Gladiators)
                     {
                         if (x.Id == z.Id && y.Id != player.Id)
                         { return BadRequest(); }
@@ -321,7 +291,7 @@ namespace Gladiator.Presentation.Api.Controllers
 
                 { return BadRequest(); }
             }
-            foreach (Gladiator x in player.Gladiators)
+            foreach (Models.Gladiator x in player.Gladiators)
             {
                 if (gladiators7.FindIndex(g => g.Id == x.Id) < 0)
 
