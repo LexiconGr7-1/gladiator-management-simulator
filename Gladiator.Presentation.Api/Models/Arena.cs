@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Gladiator.Presentation.Models
 {
@@ -16,8 +11,10 @@ namespace Gladiator.Presentation.Models
 
         [JsonProperty("schools")]
         public List<School> Schools { get; set; }
+
         [JsonProperty("gladiators")]
-        public List<Models.Gladiator> Gladiators { get; set; }
+        public List<Gladiator> Gladiators
+            => Schools.SelectMany(s => s.Gladiators).ToList();
 
     }
 }
