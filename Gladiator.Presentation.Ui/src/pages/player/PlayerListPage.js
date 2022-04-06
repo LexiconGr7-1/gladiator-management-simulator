@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+import useFetch from "../../hooks/useFetch";
 
 const PlayerListPage = () => {
     const { isLoading, data: players, fetchError } = useFetch("/api/player");
@@ -39,6 +39,6 @@ const PlayerListPage = () => {
                 ))}
         </div>
     );
-}
+};
 
 export default PlayerListPage;
