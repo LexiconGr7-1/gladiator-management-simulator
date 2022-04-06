@@ -9,5 +9,7 @@ namespace Gladiator.Core.Entities
         public int Strength { get; set; }
 
         public School School { get; set; }
+        public Player Player { get; set; }
+
     }
 }
