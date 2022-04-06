@@ -3,7 +3,7 @@ import Footer from "./Footer";
 
 function Layout(props) {
     return (
-        <div className="h-100 row align-items-center">
+        <div className="container">
             <Header />
             <main>{props.children}</main>
             <Footer />
