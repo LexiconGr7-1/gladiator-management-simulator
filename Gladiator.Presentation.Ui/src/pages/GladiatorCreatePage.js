@@ -1,42 +1,42 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import useFetch from "../hooks/useFetch";
 
 const GladiatorCreatePage = () => {
     const [name, setName] = useState(null);
     const [health, setHealth] = useState(null);
     const [strength, setStrength] = useState(null);
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [fetchError, setFetchError] = useState(false);
+
     const navigate = useNavigate();
-
-    // const handleSubmit = (e) => {
-    //     e.preventDefault();
-    //     const gladiator = { name, health, strength };
-
-    //     console.log(gladiator);
-
-    //     useFetch(
-    //         "/api/gladiator",
-    //         "POST",
-    //         { "Content-Type": "application/json" },
-    //         JSON.stringify(gladiator)
-    //     );
-
-    //     //navigate("/gladiator", { replace: true });
-    // };
-
-    //}
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const gladiator = { name, health, strength };
 
+        setIsLoading(true);
+        setFetchError(false);
+
         fetch("/api/gladiator", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(gladiator),
-        }).then(() => {
+            body: JSON.stringify(gladiator)
+        })
+        .then((res) => {
+            console.log("new person created");
+            if (!res.ok) {
+                throw Error();
+            }
+        })
+        .then(() => {
             navigate("/gladiator", { replace: true });
+        })
+        .catch((err) => {
+            console.log(err.message);
+            setIsLoading(false);
+            setFetchError(true);
         });
     };
 
@@ -77,7 +77,16 @@ const GladiatorCreatePage = () => {
                     value={strength}
                     onChange={(e) => setStrength(e.target.value)}
                 />
-                <button className="btn btn-primary">Create</button>
+                {/*<button className="btn btn-primary">Create</button>*/}
+                {!isLoading && <button className="btn btn-primary" type="submit">Add gladiator</button>}
+                {isLoading && (
+                    <button disabled className="btn btn-primary" type="submit">
+                        Saving gladiator
+                    </button>
+                )}
+                {fetchError && (
+                    <div className="mt-2 text-danger">Could not add person.</div>
+                )}
             </form>
         </div>
     );
