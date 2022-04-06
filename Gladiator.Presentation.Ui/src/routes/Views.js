@@ -5,11 +5,17 @@ import NotFound from "../pages/NotFound";
 import GladiatorCreatePage from "../pages/GladiatorCreatePage";
 import GladiatorEditPage from "../pages/GladiatorEditPage";
 import GladiatorDetailsPage from "../pages/GladiatorDetailsPage";
+import SchoolListPage from "../pages/schoolPages/SchoolListPage";
+import SchoolCreatePage from "../pages/schoolPages/SchoolCreatePage";
+import SchoolDetailsPage from "../pages/schoolPages/SchoolDetailsPage";
 
 const Views = () => {
   return (
     <Routes>
       <Route exact path="/" element={<LandingPage />} />
+      <Route exact path="/school" element={<SchoolListPage />} />
+      <Route exact path="/school/create" element={<SchoolCreatePage />} />
+      <Route exact path="/school/:id" element={<SchoolDetailsPage />} />
       <Route exact path="/gladiator/edit/:id" element={<GladiatorEditPage />} />
       <Route exact path="/gladiator/create" element={<GladiatorCreatePage />} />
       <Route exact path="/gladiator" element={<GladiatorListPage />} />
