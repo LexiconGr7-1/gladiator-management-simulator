@@ -8,6 +8,7 @@ import GladiatorDetailsPage from "../pages/GladiatorDetailsPage";
 import SchoolListPage from "../pages/schoolPages/SchoolListPage";
 import SchoolCreatePage from "../pages/schoolPages/SchoolCreatePage";
 import SchoolDetailsPage from "../pages/schoolPages/SchoolDetailsPage";
+import SchoolEditPage from "../pages/schoolPages/SchoolEditPage";
 
 const Views = () => {
   return (
@@ -16,6 +17,7 @@ const Views = () => {
       <Route exact path="/school" element={<SchoolListPage />} />
       <Route exact path="/school/create" element={<SchoolCreatePage />} />
       <Route exact path="/school/:id" element={<SchoolDetailsPage />} />
+      <Route exact path="/school/edit/:id" element={<SchoolEditPage />} />
       <Route exact path="/gladiator/edit/:id" element={<GladiatorEditPage />} />
       <Route exact path="/gladiator/create" element={<GladiatorCreatePage />} />
       <Route exact path="/gladiator" element={<GladiatorListPage />} />
