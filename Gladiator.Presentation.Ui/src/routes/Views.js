@@ -5,10 +5,10 @@ import NotFound from "../pages/NotFound";
 import GladiatorCreatePage from "../pages/GladiatorCreatePage";
 import GladiatorEditPage from "../pages/GladiatorEditPage";
 import GladiatorDetailsPage from "../pages/GladiatorDetailsPage";
-import SchoolListPage from "../pages/schoolPages/SchoolListPage";
-import SchoolCreatePage from "../pages/schoolPages/SchoolCreatePage";
-import SchoolDetailsPage from "../pages/schoolPages/SchoolDetailsPage";
-import SchoolEditPage from "../pages/schoolPages/SchoolEditPage";
+import SchoolListPage from "../pages/school/SchoolListPage";
+import SchoolCreatePage from "../pages/school/SchoolCreatePage";
+import SchoolDetailsPage from "../pages/school/SchoolDetailsPage";
+import SchoolEditPage from "../pages/school/SchoolEditPage";
 
 const Views = () => {
   return (
