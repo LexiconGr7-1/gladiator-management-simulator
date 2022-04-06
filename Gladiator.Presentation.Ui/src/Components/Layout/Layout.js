@@ -3,12 +3,12 @@ import Footer from "./Footer";
 
 function Layout(props) {
     return (
-      <div>
-        <Header />
-        <main>{props.children}</main>
-        <Footer />
-      </div>
+        <div className="container">
+            <Header />
+            <main>{props.children}</main>
+            <Footer />
+        </div>
     );
-  }
-  
-  export default Layout;
+}
+
+export default Layout;

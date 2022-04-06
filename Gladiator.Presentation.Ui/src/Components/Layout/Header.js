@@ -1,14 +1,9 @@
-import { Link } from "react-router-dom";
 import React from "react";
-
+import TopNavBar from "./TopNavBar"
 const Header = () => {
     return (
         <header>
-            <div>
-                <Link to="/gladiator-create">Create Gladiator</Link>
-                <Link to="/gladiator-edit">Edit Gladiator</Link>
-                <Link to="/gladiator-list">Gladiator list</Link>
-            </div>
+            <TopNavBar />
         </header>
     );
 };
