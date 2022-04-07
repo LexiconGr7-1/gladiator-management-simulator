@@ -12,7 +12,7 @@ const useFetch = (url, method = "GET", header = null, body = null) => {
         const config = {
             signal: abortController.signal,
             method: method,
-            header: header,
+            headers: header,
             body: body,
         };
 
@@ -39,7 +39,9 @@ const useFetch = (url, method = "GET", header = null, body = null) => {
         return () => abortController.abort();
     }, [url, method, header, body]);
 
-    return { isLoading, data, fetchError };
+    if (method == "GET") {
+        return { isLoading, data, fetchError };
+    }
 };
 
 export default useFetch;

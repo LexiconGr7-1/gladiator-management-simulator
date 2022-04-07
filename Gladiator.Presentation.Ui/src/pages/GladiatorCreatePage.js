@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
+import useFetch from "../hooks/useFetch";
 
 const GladiatorCreatePage = () => {
     const [name, setName] = useState(null);
@@ -9,35 +10,37 @@ const GladiatorCreatePage = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [fetchError, setFetchError] = useState(false);
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         const gladiator = { name, health, strength };
-
+        const header = "{ 'Content-Type': 'application/json' }";
         setIsLoading(true);
         setFetchError(false);
 
-        fetch("/api/gladiator", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(gladiator)
-        })
-        .then((res) => {
-            console.log("new person created");
-            if (!res.ok) {
-                throw Error();
-            }
-        })
-        .then(() => {
-            navigate("/gladiator", { replace: true });
-        })
-        .catch((err) => {
-            console.log(err.message);
-            setIsLoading(false);
-            setFetchError(true);
-        });
+        const { isLoading, data: gladiators, fetchError } = useFetch("/api/gladiator", "POST", JSON.stringify({ "Content-Type": "application/json" }), JSON.stringify(gladiator));
+
+        //fetch("/api/gladiator", {
+        //    method: "POST",
+        //    headers: { "Content-Type": "application/json" },
+        //    body: JSON.stringify(gladiator)
+        //})
+        //.then((res) => {
+        //    console.log("new person created");
+        //    if (!res.ok) {
+        //        throw Error();
+        //    }
+        //})
+        //.then(() => {
+        //    navigate("/gladiator", { replace: true });
+        //})
+        //.catch((err) => {
+        //    console.log(err.message);
+        //    setIsLoading(false);
+        //    setFetchError(true);
+        //});
     };
 
     return (
