@@ -19,13 +19,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Application.Test"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Presentation.Api.Test", "Gladiator.Presentation.Api.Test\Gladiator.Presentation.Api.Test.csproj", "{2887E20E-EDAB-4F21-B09B-119F9C6197EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.ApplicationData", "Gladiator.Infrastructure.ApplicationData\Gladiator.Infrastructure.ApplicationData.csproj", "{B6551B04-6A78-4651-B6E6-D0D5CC55398E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Data", "Gladiator.Infrastructure.Data\Gladiator.Infrastructure.Data.csproj", "{B6551B04-6A78-4651-B6E6-D0D5CC55398E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.ApplicationData.Test", "Gladiator.Infrastructure.ApplicationData.Test\Gladiator.Infrastructure.ApplicationData.Test.csproj", "{962363B2-D1D2-4EB6-989C-1D02310FDFA6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Data.Test", "Gladiator.Infrastructure.Data.Test\Gladiator.Infrastructure.Data.Test.csproj", "{962363B2-D1D2-4EB6-989C-1D02310FDFA6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gladiator.Infrastructure.Authentication", "Gladiator.Infrastructure.Authentication\Gladiator.Infrastructure.Authentication.csproj", "{E6600F9C-FEF3-44C9-AD66-3A5E07A21AB4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Authentication", "Gladiator.Infrastructure.Authentication\Gladiator.Infrastructure.Authentication.csproj", "{E6600F9C-FEF3-44C9-AD66-3A5E07A21AB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gladiator.Infrastructure.Authentication.Test", "Gladiator.Infrastructure.Authentication.Test\Gladiator.Infrastructure.Authentication.Test.csproj", "{ECAFDE10-4B8B-4FA6-90FF-CDCC7F36FFF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Authentication.Test", "Gladiator.Infrastructure.Authentication.Test\Gladiator.Infrastructure.Authentication.Test.csproj", "{ECAFDE10-4B8B-4FA6-90FF-CDCC7F36FFF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -21,10 +21,13 @@ namespace Gladiator.Application.Handlers.CommandHandlers
             CancellationToken cancellationToken)
         {
             var gladiatorEntity = GladiatorMapper.Mapper.Map<Core.Entities.Gladiator>(request);
+
             if (gladiatorEntity == null)
                 throw new ApplicationException("Issue with mapper");
+
             var newGladiator = await _gladiatorRepository.AddAsync(gladiatorEntity);
             var gladiatorResponse = GladiatorMapper.Mapper.Map<GladiatorResponse>(newGladiator);
+
             return gladiatorResponse;
         }
     }

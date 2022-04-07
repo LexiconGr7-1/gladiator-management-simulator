@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Gladiator.Application\Gladiator.Application.csproj" />
+  </ItemGroup>
+
 </Project>

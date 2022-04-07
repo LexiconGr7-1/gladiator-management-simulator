@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Gladiator.Infrastructure.Authentication\Gladiator.Infrastructure.Authentication.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+      <ProjectReference Include="..\Gladiator.Infrastructure.Data\Gladiator.Infrastructure.Data.csproj" />
+  </ItemGroup>
+
 </Project>

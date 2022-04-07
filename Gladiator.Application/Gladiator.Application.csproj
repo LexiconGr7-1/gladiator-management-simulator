@@ -13,12 +13,11 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
-    <PackageReference Include="FluentValidation" Version="10.4.0" />
     <PackageReference Include="MediatR" Version="10.0.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Gladiator.Infrastructure.ApplicationData\Gladiator.Infrastructure.ApplicationData.csproj" />
+    <ProjectReference Include="..\Gladiator.Core\Gladiator.Core.csproj" />
   </ItemGroup>
 
 </Project>
