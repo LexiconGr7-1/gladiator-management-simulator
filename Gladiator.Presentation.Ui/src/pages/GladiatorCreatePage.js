@@ -1,66 +1,23 @@
-import { useCallback, useState } from "react";
-import useFetch from "../hooks/useFetch";
-//import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import useFetchCallback from "../hooks/useFetchCallback";
 
 const GladiatorCreatePage = () => {
-    const [name, setName] = useState(null);
-    const [health, setHealth] = useState(null);
-    const [strength, setStrength] = useState(null);
+    const [name, setName] = useState("");
+    const [health, setHealth] = useState();
+    const [strength, setStrength] = useState();
 
-
-    const [isLoading, setIsLoading] = useState(false);
-    const [fetchError, setFetchError] = useState(false);
-    //
-    ////const navigate = useNavigate();
-    //useCallback((e)
-    const handleSubmit = useCallback((e) => {
-        e.preventDefault();
-        const gladiator = { name, health, strength };
-
-        const { isLoading1, data: gladiators, fetchError1 } = useFetch(
-            "/api/gladiator",
-            "POST",
-            { "Content-Type": "application/json" }, 
-            JSON.stringify(gladiator)
-        );
-
-        console.log(gladiators);
-
-        setFetchError(fetchError1);
-        setIsLoading(isLoading1);
-
-        if (isLoading || fetchError) {
-            return <span>Loading...({fetchError})</span>;
-        }
-
-    //    setIsLoading(true);
-    //    setFetchError(false);
-    //
-    //    fetch("/api/gladiator", {
-    //        method: "POST",
-    //        headers: { "Content-Type": "application/json" },
-    //        body: JSON.stringify(gladiator)
-    //    })
-    //    .then((res) => {
-    //        console.log("new person created");
-    //        if (!res.ok) {
-    //            throw Error();
-    //        }
-    //    })
-    //    .then(() => {
-    //        navigate("/gladiator", { replace: true });
-    //    })
-    //    .catch((err) => {
-    //        console.log(err.message);
-    //        setIsLoading(false);
-    //        setFetchError(true);
-    //    });
-    }, []);
+    const { isLoading, fetchError, fetchApi } = useFetchCallback(
+        "/api/gladiator",
+        "POST",
+        { "Content-Type": "application/json" },
+        JSON.stringify({ name, health, strength }),
+        "/gladiator"
+    );
 
     return (
         <div>
             <h2>Create new gladiator</h2>
-            <form onSubmit={handleSubmit}>
+            <form>
                 <label htmlFor="name" className="form-label">
                     Name
                 </label>
@@ -94,15 +51,26 @@ const GladiatorCreatePage = () => {
                     value={strength}
                     onChange={(e) => setStrength(e.target.value)}
                 />
-                {/*<button className="btn btn-primary">Create</button>*/}
-                {!isLoading && <button className="btn btn-primary" type="submit">Add gladiator</button>}
+                {!isLoading && (
+                    <button
+                        onClick={() => {
+                            fetchApi();
+                        }}
+                        className="btn btn-primary"
+                        type="button"
+                    >
+                        Add gladiator
+                    </button>
+                )}
                 {isLoading && (
                     <button disabled className="btn btn-primary" type="submit">
                         Saving gladiator
                     </button>
                 )}
                 {fetchError && (
-                    <div className="mt-2 text-danger">Could not add person.</div>
+                    <div className="mt-2 text-danger">
+                        Could not add gladiator. {fetchError}
+                    </div>
                 )}
             </form>
         </div>

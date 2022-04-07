@@ -1,26 +1,26 @@
-import { useState, useEffect } from "react";
+import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-const useFetch = (
+const useFetchCallback = (
     url,
     method = "GET",
-    header = null,
+    headers = null,
     body = null,
     navigateTo = null
 ) => {
-    const [isLoading, setIsLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState(null);
     const [fetchError, setFetchError] = useState(null);
     const navigate = useNavigate();
 
-    useEffect(() => {
+    const fetchApi = useCallback(() => {
         const abortController = new AbortController();
         setIsLoading(true);
 
         const config = {
             signal: abortController.signal,
             method: method,
-            header: header,
+            headers: headers,
             body: body,
         };
 
@@ -41,17 +41,18 @@ const useFetch = (
                 }
             })
             .catch((err) => {
+                console.log(err);
                 if (err.name === "AbortError") {
-                    //console.log("fetch aborted");
+                    console.log("fetch aborted");
                 } else {
                     setIsLoading(false);
                     setFetchError(err.message);
                 }
             });
         return () => abortController.abort();
-    }, [url, method, header, body, navigateTo]);
+    }, [url, method, headers, body, navigateTo]);
 
-    return { isLoading, data, fetchError };
+    return { isLoading, data, fetchError, fetchApi };
 };
 
-export default useFetch;
+export default useFetchCallback;
