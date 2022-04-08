@@ -1,8 +1,8 @@
 ﻿using Gladiator.Core.Repositories;
-using Gladiator.Infrastructure.ApplicationData.Data;
-using Gladiator.Infrastructure.ApplicationData.Repositories.Base;
+using Gladiator.Infrastructure.Data.Data;
+using Gladiator.Infrastructure.Data.Repositories.Base;
 
-namespace Gladiator.Infrastructure.ApplicationData.Repositories
+namespace Gladiator.Infrastructure.Data.Repositories
 {
     public class GladiatorRepository
         : Repository<Core.Entities.Gladiator>, IGladiatorRepository

@@ -1,12 +1,12 @@
-﻿using Gladiator.Application.Commands;
-using Gladiator.Application.Mappers;
-using Gladiator.Application.Responses;
+﻿using Gladiator.Application.Commands.Gladiator;
+using Gladiator.Application.Mappers.Gladiator;
+using Gladiator.Application.Responses.Gladiator;
 using Gladiator.Core.Repositories;
 using MediatR;
 
-namespace Gladiator.Application.Handlers.CommandHandlers
+namespace Gladiator.Application.Handlers.CommandHandlers.Gladiator
 {
-    internal class CreateGladiatorHandler
+    public class CreateGladiatorHandler
         : IRequestHandler<CreateGladiatorCommand, GladiatorResponse>
     {
         private readonly IGladiatorRepository _gladiatorRepository;
@@ -22,7 +22,7 @@ namespace Gladiator.Application.Handlers.CommandHandlers
         {
             var gladiatorEntity = GladiatorMapper.Mapper.Map<Core.Entities.Gladiator>(request);
 
-            if (gladiatorEntity == null)
+            if (gladiatorEntity is null)
                 throw new ApplicationException("Issue with mapper");
 
             var newGladiator = await _gladiatorRepository.AddAsync(gladiatorEntity);

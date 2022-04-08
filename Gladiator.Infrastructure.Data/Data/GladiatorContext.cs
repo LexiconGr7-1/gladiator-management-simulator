@@ -1,7 +1,7 @@
 ﻿using Gladiator.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gladiator.Infrastructure.ApplicationData.Data
+namespace Gladiator.Infrastructure.Data.Data
 {
     public class GladiatorContext : DbContext
     {

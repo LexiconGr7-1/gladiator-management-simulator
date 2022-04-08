@@ -1,4 +1,6 @@
-﻿namespace Gladiator.Application.Responses
+﻿using Gladiator.Core.Entities;
+
+namespace Gladiator.Application.Responses.Gladiator
 {
     public class GladiatorResponse
     {
@@ -6,7 +8,7 @@
         public string Name { get; set; }
         public int Health { get; set; }
         public int Strength { get; set; }
-
-        //public SchoolResponse School { get; set; }
+        public School School { get; set; }
+        public Player Player { get; set; }
     }
 }

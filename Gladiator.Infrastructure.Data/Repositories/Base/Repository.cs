@@ -1,12 +1,12 @@
 ﻿using Gladiator.Core.Repositories.Base;
-using Gladiator.Infrastructure.ApplicationData.Data;
+using Gladiator.Infrastructure.Data.Data;
 using Microsoft.EntityFrameworkCore;
 
-namespace Gladiator.Infrastructure.ApplicationData.Repositories.Base
+namespace Gladiator.Infrastructure.Data.Repositories.Base
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly GladiatorContext _context;
+        protected readonly GladiatorContext _context;
 
         public Repository(GladiatorContext context)
         {
@@ -30,9 +30,11 @@ namespace Gladiator.Infrastructure.ApplicationData.Repositories.Base
             return await _context.Set<T>().FindAsync(id);
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task<T> UpdateAsync(T entity)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Update(entity);
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
         public async Task DeleteAsync(T entity)
