@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import LoadingSpinner from "../Components/LoadingSpinner";
+import LoadingSpinner from "../../Components/LoadingSpinner";
 
 const SchoolListPage = () => {
     const { isLoading, data: schools, fetchError } = useFetch("/api/school");

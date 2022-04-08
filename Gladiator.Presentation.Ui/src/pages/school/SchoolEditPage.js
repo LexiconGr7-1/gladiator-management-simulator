@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import LoadingSpinner from "../Components/LoadingSpinner";
+import LoadingSpinner from "../../Components/LoadingSpinner";
 
 const SchoolEditPage = () => {
     const { id } = useParams();

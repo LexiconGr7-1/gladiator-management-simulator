@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import LoadingSpinner from "../Components/LoadingSpinner";
+import LoadingSpinner from "../../Components/LoadingSpinner";
 
 const PlayerDetailsPage = () => {
     const { id } = useParams();
