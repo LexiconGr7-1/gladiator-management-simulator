@@ -1,8 +1,23 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+//import useFetch from "../hooks/useFetch";
+import useFetchCallback from "../hooks/useFetchCallback";
 
 const GladiatorListPage = () => {
-    const { isLoading, data: gladiators, fetchError } = useFetch("/api/gladiator");
+    //const { isLoading, data: gladiators, fetchError } = useFetch("/api/gladiator");
+    //
+
+    const { isLoading, data: gladiators, fetchError, fetchApi } = useFetchCallback(
+        "/api/gladiator",
+        "GET",
+        { "Content-Type": "application/json" },
+        null,
+        null
+    );
+
+    useEffect(() => {
+        fetchApi();
+    }, []);
 
     if (isLoading || fetchError) {
         return <span>Loading...({fetchError})</span>;
@@ -37,6 +52,14 @@ const GladiatorListPage = () => {
                         </Link>
                     </div>
                 ))}
+            <div>
+                <Link
+                    to={`/gladiator/create`}
+                    className="btn btn-secondary mx-3 col"
+                >
+                    Create
+                </Link>
+            </div>
         </div>
     );
 };
