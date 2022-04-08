@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import LoadingSpinner from "../../Components/LoadingSpinner";
 
 const SchoolEditPage = () => {
     const { id } = useParams();
@@ -10,7 +11,7 @@ const SchoolEditPage = () => {
     } = useFetch(`/api/school/${id}`);
 
     if (isLoading || fetchError) {
-        return <span>Loading...({fetchError})</span>;
+        return <LoadingSpinner>({fetchError})</LoadingSpinner>;
     }
 
     return (
