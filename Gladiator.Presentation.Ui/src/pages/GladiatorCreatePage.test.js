@@ -3,6 +3,6 @@ import GladiatorCreatePage from "./GladiatorCreatePage";
 
 test("renders gladiator create page", () => {
     render(<GladiatorCreatePage />);
-    const linkElement = screen.getByText(/Create gladiator/i);
+    const linkElement = screen.getByText(/Create new gladiator/i);
     expect(linkElement).toBeInTheDocument();
 });
