@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 const PlayerDetailsPage = () => {
     const { id } = useParams();
@@ -11,7 +12,7 @@ const PlayerDetailsPage = () => {
     } = useFetch(`/api/player/${id}`);
 
     if (isLoading || fetchError) {
-        return <span>Loading...({fetchError})</span>;
+        return <LoadingSpinner>({fetchError})</LoadingSpinner>;
     }
 
     return (

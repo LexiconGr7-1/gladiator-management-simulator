@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import useFetch from "../hooks/useFetch";
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 const GladiatorListPage = () => {
     const { isLoading, data: gladiators, fetchError } = useFetch("/api/gladiator");
 
     if (isLoading || fetchError) {
-        return <span>Loading...({fetchError})</span>;
+        return <LoadingSpinner>({fetchError})</LoadingSpinner>;
     }
 
     return (

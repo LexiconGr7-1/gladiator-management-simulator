@@ -1,11 +1,12 @@
 import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 const PlayerListPage = () => {
     const { isLoading, data: players, fetchError } = useFetch("/api/player");
 
     if (isLoading || fetchError) {
-        return <span>Loading...({fetchError})</span>;
+        return <LoadingSpinner>({fetchError})</LoadingSpinner>;
     }
 
     return (
