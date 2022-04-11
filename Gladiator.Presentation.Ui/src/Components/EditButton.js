@@ -2,23 +2,26 @@ import { useNavigate } from "react-router-dom";
 
 const EditButton = ({ value, url, navigateTo, body }) => {
     const navigate = useNavigate();
-    const handleEdit = () => {
+
+    const handleEdit = (e) => {
+        e.preventDefault();
 
         fetch(url, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(body)
+            body: JSON.stringify(body),
         })
             .then(() => {
-                navigate(
-                    navigateTo,
-                    { replace: true }
-                )
+                navigate(navigateTo, { replace: true });
             })
-            .catch(err => console.log(err));
-    }
+            .catch((err) => console.log(err));
+    };
 
-    return <button className="btn btn-secondary" onClick={handleEdit}>{value}</button>
-}
+    return (
+        <button className="btn btn-secondary" onClick={handleEdit}>
+            {value}
+        </button>
+    );
+};
 
-export default EditButton
+export default EditButton;

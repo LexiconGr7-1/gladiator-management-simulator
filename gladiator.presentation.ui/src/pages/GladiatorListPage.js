@@ -4,7 +4,12 @@ import DeleteButton from "../Components/DeleteButton";
 import useFetchCallback from "../hooks/useFetchCallback";
 
 const GladiatorListPage = () => {
-    const { isLoading, data: gladiators, fetchError, fetchApi } = useFetchCallback(
+    const {
+        isLoading,
+        data: gladiators,
+        fetchError,
+        fetchApi,
+    } = useFetchCallback(
         "/api/gladiator",
         "GET",
         { "Content-Type": "application/json" },
@@ -44,7 +49,7 @@ const GladiatorListPage = () => {
                         <DeleteButton
                             value="Delete"
                             url={`/api/gladiator/${gladiator.id}`}
-                            navigateTo={ 0 }
+                            navigateTo={0}
                         />
                     </div>
                 ))}

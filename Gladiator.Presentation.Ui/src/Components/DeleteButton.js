@@ -2,19 +2,21 @@ import { useNavigate } from "react-router-dom";
 
 const DeleteButton = ({ value, url, navigateTo }) => {
     const navigate = useNavigate();
-    const handleDelete = () => {
-        
+    const handleDelete = (e) => {
+        e.preventDefault();
+
         fetch(url, { method: "DELETE" })
             .then(() => {
-                navigate(
-                    navigateTo,
-                    { replace: true }
-                )
+                navigate(navigateTo, { replace: true });
             })
-            .catch(err => console.log(err));
-    }
+            .catch((err) => console.log(err));
+    };
 
-    return <button className="btn btn-secondary" onClick={ handleDelete }>{ value }</button>
-}
+    return (
+        <button className="btn btn-secondary" onClick={handleDelete}>
+            {value}
+        </button>
+    );
+};
 
-export default DeleteButton
+export default DeleteButton;
