@@ -7,8 +7,8 @@ namespace Gladiator.Core.Entities.Base
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public virtual Int64 Id { get; set; }
-        public virtual DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public virtual long Id { get; set; }
+        public virtual DateTime CreatedAt { get; set; }
         public virtual DateTime UpdatedAt { get; set; }
     }
 }

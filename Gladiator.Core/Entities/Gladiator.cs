@@ -4,11 +4,19 @@ namespace Gladiator.Core.Entities
 {
     public class Gladiator : BaseEntityWithName
     {
-        // stats
         public int Health { get; set; }
         public int Strength { get; set; }
 
-        //public School School { get; set; }
-        //public Player Player { get; set; }
+        public bool OnFightRoster { get; set; }
+
+        public int? ArenaId { get; set; }
+        public Arena? Arena { get; set; }
+
+        public int? SchoolId { get; set; }
+        public School? School { get; set; }
+
+        public int? PlayerId { get; set; }
+        public Player? Player { get; set; }
+
     }
 }
