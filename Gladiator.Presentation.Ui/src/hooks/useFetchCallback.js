@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -8,10 +9,14 @@ const useFetchCallback = (
     body = null,
     navigateTo = null
 ) => {
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState(null);
     const [fetchError, setFetchError] = useState(null);
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (method != "GET") setIsLoading(false);
+    }, []);
 
     const fetchApi = useCallback(() => {
         const abortController = new AbortController();
@@ -51,7 +56,7 @@ const useFetchCallback = (
             });
         return () => abortController.abort();
     }, [url, method, headers, body, navigateTo]);
-
+    
     return { isLoading, data, fetchError, fetchApi };
 };
 

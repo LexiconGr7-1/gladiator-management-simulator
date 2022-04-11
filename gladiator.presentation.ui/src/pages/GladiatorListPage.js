@@ -1,12 +1,9 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-//import useFetch from "../hooks/useFetch";
+import DeleteButton from "../Components/DeleteButton";
 import useFetchCallback from "../hooks/useFetchCallback";
 
 const GladiatorListPage = () => {
-    //const { isLoading, data: gladiators, fetchError } = useFetch("/api/gladiator");
-    //
-
     const { isLoading, data: gladiators, fetchError, fetchApi } = useFetchCallback(
         "/api/gladiator",
         "GET",
@@ -44,18 +41,17 @@ const GladiatorListPage = () => {
                         >
                             Edit
                         </Link>
-                        <Link
-                            to={`/gladiator/delete/${gladiator.id}`}
-                            className="btn btn-secondary mx-3 col"
-                        >
-                            Delete
-                        </Link>
+                        <DeleteButton
+                            value="Delete"
+                            url={`/api/gladiator/${gladiator.id}`}
+                            navigateTo={ 0 }
+                        />
                     </div>
                 ))}
             <div>
                 <Link
                     to={`/gladiator/create`}
-                    className="btn btn-secondary mx-3 col"
+                    className="btn btn-secondary col"
                 >
                     Create
                 </Link>

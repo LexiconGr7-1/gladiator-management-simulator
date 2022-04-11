@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useFetchCallback from "../hooks/useFetchCallback";
+import { Link } from "react-router-dom";
 
 const GladiatorCreatePage = () => {
     const [name, setName] = useState("");
@@ -56,23 +57,26 @@ const GladiatorCreatePage = () => {
                         onClick={() => {
                             fetchApi();
                         }}
-                        className="btn btn-primary"
+                        className="btn btn-primary mb-3"
                         type="button"
                     >
                         Add gladiator
                     </button>
                 )}
                 {isLoading && (
-                    <button disabled className="btn btn-primary" type="submit">
+                    <button disabled className="btn btn-primary mb-3" type="submit">
                         Saving gladiator
                     </button>
                 )}
                 {fetchError && (
-                    <div className="mt-2 text-danger">
+                    <div className="mb-3 text-danger">
                         Could not add gladiator. {fetchError}
                     </div>
                 )}
             </form>
+            <Link to="/gladiator" className="btn btn-secondary mb-3 col">
+                Back
+            </Link>
         </div>
     );
 };
