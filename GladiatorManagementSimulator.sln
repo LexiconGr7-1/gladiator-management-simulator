@@ -15,13 +15,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Presentation.Api"
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Gladiator.Presentation.Ui", "Gladiator.Presentation.Ui\Gladiator.Presentation.Ui.esproj", "{75F4A81B-22DE-46F9-BB17-DFC84C33725F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gladiator.Core.Test", "Gladiator.Core.Test\Gladiator.Core.Test.csproj", "{3AAE862D-EF42-4D8B-87AF-FA87CC52EEEB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Core.Test", "Gladiator.Core.Test\Gladiator.Core.Test.csproj", "{3AAE862D-EF42-4D8B-87AF-FA87CC52EEEB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gladiator.Application.Test", "Gladiator.Application.Test\Gladiator.Application.Test.csproj", "{9F04B7D9-8FA2-4A14-9B8C-F704820F8748}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Application.Test", "Gladiator.Application.Test\Gladiator.Application.Test.csproj", "{9F04B7D9-8FA2-4A14-9B8C-F704820F8748}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gladiator.Infrastructure.Test", "Gladiator.Infrastructure.Test\Gladiator.Infrastructure.Test.csproj", "{39D5F544-4EC3-48B7-BC53-15474266FC0B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Test", "Gladiator.Infrastructure.Test\Gladiator.Infrastructure.Test.csproj", "{39D5F544-4EC3-48B7-BC53-15474266FC0B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gladiator.Presentation.Api.Test", "Gladiator.Presentation.Api.Test\Gladiator.Presentation.Api.Test.csproj", "{2887E20E-EDAB-4F21-B09B-119F9C6197EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Presentation.Api.Test", "Gladiator.Presentation.Api.Test\Gladiator.Presentation.Api.Test.csproj", "{2887E20E-EDAB-4F21-B09B-119F9C6197EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
