@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import useFetchCallback from "../hooks/useFetchCallback";
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 const GladiatorDetailsPage = () => {
     const {id} = useParams();
@@ -19,7 +20,7 @@ const GladiatorDetailsPage = () => {
     }, [id]);
 
     if (isLoading || fetchError) {
-        return <span>Loading...({fetchError})</span>;
+        return <LoadingSpinner>({fetchError})</LoadingSpinner>;
     }
 
     return (

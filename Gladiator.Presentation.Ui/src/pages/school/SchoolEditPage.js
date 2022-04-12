@@ -2,13 +2,13 @@ import { useParams } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import LoadingSpinner from "../../Components/LoadingSpinner";
 
-const PlayerEditPage = () => {
+const SchoolEditPage = () => {
     const { id } = useParams();
     const {
         isLoading,
-        data: player,
+        data: school,
         fetchError,
-    } = useFetch(`/api/player/${id}`);
+    } = useFetch(`/api/school/${id}`);
 
     if (isLoading || fetchError) {
         return <LoadingSpinner>({fetchError})</LoadingSpinner>;
@@ -16,7 +16,7 @@ const PlayerEditPage = () => {
 
     return (
         <div>
-            <h2>Edit {player.name}</h2>
+            <h2>Edit {school.name}</h2>
             <form>
                 <label htmlFor="name" className="form-label">
                     Name
@@ -24,7 +24,7 @@ const PlayerEditPage = () => {
                 <input
                     type="text"
                     name="name"
-                    defaultValue={player.name}
+                    defaultValue={school.name}
                     className="form-control mb-3"
                 />
                 <button type="submit" className="btn btn-primary">
@@ -35,4 +35,4 @@ const PlayerEditPage = () => {
     );
 };
 
-export default PlayerEditPage;
+export default SchoolEditPage;

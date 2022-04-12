@@ -2,8 +2,8 @@ import { Link } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import LoadingSpinner from "../../Components/LoadingSpinner";
 
-const PlayerListPage = () => {
-    const { isLoading, data: players, fetchError } = useFetch("/api/player");
+const SchoolListPage = () => {
+    const { isLoading, data: schools, fetchError } = useFetch("/api/school");
 
     if (isLoading || fetchError) {
         return <LoadingSpinner>({fetchError})</LoadingSpinner>;
@@ -11,27 +11,27 @@ const PlayerListPage = () => {
 
     return (
         <div>
-            <h2>Player List</h2>
+            <h2>School List</h2>
 
-            {players &&
-                players.map((player) => (
-                    <div key={player.Id} className="row mb-3">
-                        <span className="col-4">{player.name}</span>
+            {schools &&
+                schools.map((school) => (
+                    <div key={school.id} className="mb-3">
+                        <span className="col">{school.name}</span>
                         <Link
-                            to={`/player/${player.Id}`}
+                            to={`/school/${school.id}`}
                             className="btn btn-secondary mx-3 col"
                         >
                             Details
                         </Link>
 
                         <Link
-                            to={`/player/edit/${player.Id}`}
+                            to={`/school/edit/${school.id}`}
                             className="btn btn-secondary mx-3 col"
                         >
                             Edit
                         </Link>
                         <Link
-                            to={`/player/delete/${player.Id}`}
+                            to={`/school/delete/${school.id}`}
                             className="btn btn-secondary mx-3 col"
                         >
                             Delete
@@ -42,4 +42,4 @@ const PlayerListPage = () => {
     );
 };
 
-export default PlayerListPage;
+export default SchoolListPage;

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import DeleteButton from "../Components/DeleteButton";
 import useFetchCallback from "../hooks/useFetchCallback";
+import LoadingSpinner from "../Components/LoadingSpinner";
 
 const GladiatorListPage = () => {
     const {
@@ -22,7 +23,7 @@ const GladiatorListPage = () => {
     }, []);
 
     if (isLoading || fetchError) {
-        return <span>Loading...({fetchError})</span>;
+        return <LoadingSpinner>({fetchError})</LoadingSpinner>;
     }
 
     return (
