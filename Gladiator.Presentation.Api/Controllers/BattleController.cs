@@ -1,5 +1,6 @@
 ﻿using Gladiator.Presentation.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace Gladiator.Presentation.Api.Controllers
 {
@@ -38,7 +39,7 @@ namespace Gladiator.Presentation.Api.Controllers
         private static List<Arena> Arenas = new()
         {
             new Arena {Id = 1, Name = "Arena 1", Schools = Schools.GetRange(0, 2)},
-            new Arena {Id = 2, Name = "Arena 2", Schools = Schools.GetRange(1, 2)}
+            new Arena {Id = 2, Name = "Arena 2", Schools = Schools.GetRange(2, 1)}
         };
 
         [HttpGet("gladiator/player/{id:int}")]
@@ -55,12 +56,63 @@ namespace Gladiator.Presentation.Api.Controllers
         [HttpGet("arena/gladiator/{id:int}")]
         public IActionResult GetArenaFromGladiatorId(int id)
         {
-            var arenas =
-                from arena in Arenas
-                where player.Id == id
-                select player.Gladiators;
+            var gladiator = Gladiators.SingleOrDefault(g => g.Id == id);
 
-            return Ok(gladiators);
+            if (gladiator is null)
+                return NotFound("Gladiator not found");
+
+            var school = Schools.SingleOrDefault(s => s.Gladiators.Any(g => g.Id == gladiator.Id));
+            
+            if (school is null)
+                return NotFound("Gladiator not in school");
+
+            var arena = Arenas.SingleOrDefault(a => a.Schools.Any(s => s.Id == school.Id));
+
+            if (arena is null)
+                return NotFound("School not in arena");
+
+            return Ok(arena);
+        }
+
+        [HttpGet("roster/gladiator/player/{id:int}")]
+        public IActionResult GetGladiatorRosterFromPlayerId(int id)
+        {
+            // all player's gladiators
+
+            
+            return Ok();
+        }
+
+        [HttpGet("roster/opponent/gladiator/{id:int}")]
+        public IActionResult GetOpponentRosterFromGladiatorId(int id)
+        {
+            // all other gladiators able to fight gladiator, in same area, not same player
+
+            return Ok();
+        }
+
+        public class GladiatorBattleRosterDto
+        {
+            [JsonProperty("gladiators")]
+            public List<GladiatorBattleDto> Gladiators { get; set; }
+        }
+
+        public class GladiatorBattleDto
+        {
+            [JsonProperty("gladiator")]
+            public Models.Gladiator Gladiator { get; set; }
+            [JsonProperty("arenaid")]
+            public int ArenaId { get; set; }
+            [JsonProperty("arenaname")]
+            public string ArenaName { get; set; }
+            [JsonProperty("playerid")]
+            public int PlayerId { get; set; }
+            [JsonProperty("playername")]
+            public string PlayerName { get; set; }
+            [JsonProperty("schoolid")]
+            public int SchoolId { get; set; }
+            [JsonProperty("schoolname")]
+            public string SchoolName { get; set; }
         }
     }
 
