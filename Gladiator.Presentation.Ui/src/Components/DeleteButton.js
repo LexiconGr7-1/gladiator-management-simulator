@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const DeleteButton = ({ value, url, navigateTo }) => {
+const DeleteButton = ({ value, url, navigateTo, className }) => {
     const navigate = useNavigate();
     const handleDelete = (e) => {
         e.preventDefault();
@@ -13,7 +13,7 @@ const DeleteButton = ({ value, url, navigateTo }) => {
     };
 
     return (
-        <button className="btn btn-secondary" onClick={handleDelete}>
+        <button className={`btn btn-secondary ${className}`} onClick={handleDelete}>
             {value}
         </button>
     );

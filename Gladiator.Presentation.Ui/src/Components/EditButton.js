@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-const EditButton = ({ value, url, navigateTo, body }) => {
+const EditButton = ({ value, url, navigateTo, body, className }) => {
     const navigate = useNavigate();
 
     const handleEdit = (e) => {
@@ -18,7 +18,7 @@ const EditButton = ({ value, url, navigateTo, body }) => {
     };
 
     return (
-        <button className="btn btn-secondary" onClick={handleEdit}>
+        <button className={`btn btn-secondary ${className}`} onClick={handleEdit}>
             {value}
         </button>
     );

@@ -14,8 +14,8 @@ const PlayerListPage = () => {
 
             {players &&
                 players.map((player) => (
-                    <div key={player.Id} className="mb-3">
-                        <span className="col">{player.name}</span>
+                    <div key={player.Id} className="row mb-3">
+                        <span className="col-4">{player.name}</span>
                         <Link
                             to={`/player/${player.Id}`}
                             className="btn btn-secondary mx-3 col"

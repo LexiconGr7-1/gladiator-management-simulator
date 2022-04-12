@@ -31,8 +31,8 @@ const GladiatorListPage = () => {
 
             {gladiators &&
                 gladiators.map((gladiator) => (
-                    <div key={gladiator.id} className="mb-3">
-                        <span className="col">{gladiator.name}</span>
+                    <div key={gladiator.id} className="row mb-3">
+                        <span className="col-4">{gladiator.name}</span>
                         <Link
                             to={`/gladiator/${gladiator.id}`}
                             className="btn btn-secondary mx-3 col"
@@ -50,6 +50,7 @@ const GladiatorListPage = () => {
                             value="Delete"
                             url={`/api/gladiator/${gladiator.id}`}
                             navigateTo={0}
+                            className="mx-3 col"
                         />
                     </div>
                 ))}

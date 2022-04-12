@@ -86,6 +86,7 @@ const GladiatorEditPage = () => {
                     url={`/api/gladiator/${gladiator.id}`}
                     navigateTo={"/gladiator"}
                     body={{ name, health, strength }}
+                    className="mb-3 col"
                 />
             </form>
             <Link to="/gladiator" className="btn btn-secondary mb-3 col">
