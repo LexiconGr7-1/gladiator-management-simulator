@@ -13,7 +13,7 @@ import SchoolListPage from "../pages/school/SchoolListPage";
 import SchoolCreatePage from "../pages/school/SchoolCreatePage";
 import SchoolDetailsPage from "../pages/school/SchoolDetailsPage";
 import SchoolEditPage from "../pages/school/SchoolEditPage";
-
+import BattlePage from "../pages/battle/BattlePage";
 const Views = () => {
   return (
     <Routes>
@@ -30,6 +30,7 @@ const Views = () => {
       <Route exact path="/player/:id" element={<PlayerDetailsPage />} />
       <Route exact path="/player/create" element={<PlayerCreatePage />} />
       <Route exact path="/player/edit/:id" element={<PlayerEditPage />} />
+      <Route exact path="/battle" element={<BattlePage/>} />
       <Route index element={<LandingPage />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
