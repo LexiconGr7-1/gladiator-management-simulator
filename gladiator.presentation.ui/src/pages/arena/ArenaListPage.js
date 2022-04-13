@@ -5,7 +5,7 @@ const ArenaListPage = () => {
     const { isLoading, data: arenas, fetchError } = useFetch("/api/arena");
 
     if (isLoading || fetchError) {
-        return <span>Loading...({fetchError})</span>;
+        return <span>Loading arena list...({fetchError})</span>;
     }
     console.log(arenas);
 
