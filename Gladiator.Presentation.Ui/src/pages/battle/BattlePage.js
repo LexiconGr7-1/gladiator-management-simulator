@@ -28,7 +28,10 @@ const BattlePage = () => {
     return (
         <div className="row">
             <div className="col">
-                <div className="accordion" id="gladiatorsOpenPanel">
+                <div
+                    className="accordion accordion-flush"
+                    id="gladiatorsOpenPanel"
+                >
                     {gladiators &&
                         gladiators.map((gladiator) => (
                             <div
@@ -37,25 +40,24 @@ const BattlePage = () => {
                             >
                                 <h2
                                     className="accordion-header"
-                                    id="headingOne"
+                                    id="flush-headingOne"
                                 >
                                     <button
-                                        className="accordion-button"
+                                        className="accordion-button collapsed"
                                         type="button"
                                         data-bs-toggle="collapse"
-                                        data-bs-target="#collapseOne"
-                                        aria-expanded="true"
-                                        aria-controls="collapseOne"
+                                        data-bs-target="#flush-collapseOne"
+                                        aria-expanded="false"
+                                        aria-controls="flush-collapseOne"
                                     >
                                         {gladiator.gladiator.name}
                                     </button>
                                 </h2>
                                 <div
-                                    div
-                                    id="collapseOne"
-                                    className="accordion-collapse collapse show"
-                                    aria-labelledby="headingOne"
-                                    data-bs-parent="#accordionExample"
+                                    id="flush-collapseOne"
+                                    className="accordion-collapse collapse"
+                                    aria-labelledby="flush-headingOne"
+                                    data-bs-parent="#accordionFlushExample"
                                 >
                                     <div className="accordion-body">
                                         <ul>
