@@ -13,6 +13,10 @@ import SchoolListPage from "../pages/school/SchoolListPage";
 import SchoolCreatePage from "../pages/school/SchoolCreatePage";
 import SchoolDetailsPage from "../pages/school/SchoolDetailsPage";
 import SchoolEditPage from "../pages/school/SchoolEditPage";
+import ArenaListPage from "../pages/arena/ArenaListPage";
+import ArenaDetailsPage from "../pages/arena/ArenaDetailsPage";
+import ArenaEditPage from "../pages/arena/ArenaEditPage";
+import ArenaCreatePage from "../pages/arena/ArenaCreatePage";
 import BattlePage from "../pages/battle/BattlePage";
 const Views = () => {
   return (
@@ -30,6 +34,10 @@ const Views = () => {
       <Route exact path="/player/:id" element={<PlayerDetailsPage />} />
       <Route exact path="/player/create" element={<PlayerCreatePage />} />
       <Route exact path="/player/edit/:id" element={<PlayerEditPage />} />
+      <Route exact path="/arena" element={<ArenaListPage />} />
+      <Route exact path="/arena/:id" element={<ArenaDetailsPage />} />
+      <Route exact path="/arena/create" element={<ArenaCreatePage />} />
+      <Route exact path="/arena/edit/:id" element={<ArenaEditPage />} />
       <Route exact path="/battle" element={<BattlePage/>} />
       <Route index element={<LandingPage />} />
       <Route path="*" element={<NotFound />} />
