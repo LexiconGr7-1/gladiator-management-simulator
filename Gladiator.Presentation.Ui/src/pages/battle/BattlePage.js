@@ -62,12 +62,10 @@ const BattlePage = () => {
                                     <div className="accordion-body">
                                         <ul>
                                             <li>
-                                                Health:{" "}
-                                                {gladiator.gladiator.health}
+                                                Health: {gladiator.gladiator.health}
                                             </li>
                                             <li>
-                                                Strength:{" "}
-                                                {gladiator.gladiator.strength}
+                                                Strength: {gladiator.gladiator.strength}
                                             </li>
                                         </ul>
                                     </div>
