@@ -6,6 +6,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 
 namespace Gladiator.Infrastructure.Data.Data
 {
@@ -25,9 +27,21 @@ namespace Gladiator.Infrastructure.Data.Data
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<School>().ToTable("Schools");
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<Player>().ToTable("Gladiator");
+            modelBuilder.Entity<Player>().ToTable("Players");
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Arena>().ToTable("Arenas");
         }
+    }
+
+    public class GladiatorContextFactory : IDesignTimeDbContextFactory<GladiatorContext>
+    {
+        public GladiatorContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<GladiatorContext>();
+            
+            optionsBuilder.UseSqlServer("server=.;database=myDb;trusted_connection=true;");
+            return new GladiatorContext(optionsBuilder.Options);
+        }
+       
     }
 }
