@@ -13,8 +13,7 @@ namespace Gladiator.Presentation.Models
         public List<School> Schools { get; set; }
 
         [JsonProperty("gladiators")]
-        public List<Gladiator> Gladiators
-            => Schools.SelectMany(s => s.Gladiators).ToList();
-
+        public List<Gladiator> Gladiators =>
+           Schools != null ? Schools.SelectMany(s => s.Gladiators ).ToList() : null;
     }
 }

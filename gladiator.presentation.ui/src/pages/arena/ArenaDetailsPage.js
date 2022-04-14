@@ -1,28 +1,38 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import LoadingSpinner from "../../Components/LoadingSpinner";
+import useFetchCallback from "../../hooks/useFetchCallback";
 
 const ArenaDetailsPage = () => {
     const { id } = useParams();
+
     const {
         isLoading,
         data: arena,
         fetchError,
-    } = useFetch(`/api/arena/${id}`);
+        fetchApi,
+    } = useFetchCallback(
+        `/api/arena/${id}`,
+        "GET",
+        { "Content-Type": "application/json" },
+        null,
+        null
+    );
+
+    useEffect(() => {
+        fetchApi();
+    }, [id]);
 
     if (isLoading || fetchError) {
-        return <span>Loading arena details...({fetchError})</span>;
+        return <LoadingSpinner>({fetchError})</LoadingSpinner>;
     }
-    console.log(arena);
 
     return (
         <div>
             <h2>{arena.name}</h2>
 
-            <Link
-                to={`/arena/edit/${arena.id}`}
-                className="btn btn-secondary"
-            >
+            <Link to={`/arena/edit/${arena.id}`} className="btn btn-secondary">
                 Edit
             </Link>
 

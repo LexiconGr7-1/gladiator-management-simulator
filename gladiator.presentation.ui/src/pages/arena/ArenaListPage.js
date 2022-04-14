@@ -1,13 +1,30 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import DeleteButton from "../../Components/DeleteButton";
+import LoadingSpinner from "../../Components/LoadingSpinner";
+import useFetchCallback from "../../hooks/useFetchCallback";
 
 const ArenaListPage = () => {
-    const { isLoading, data: arenas, fetchError } = useFetch("/api/arena");
+    const {
+        isLoading,
+        data: arenas,
+        fetchError,
+        fetchApi,
+    } = useFetchCallback(
+        "/api/arena",
+        "GET",
+        { "Content-Type": "application/json" },
+        null,
+        null
+    );
+
+    useEffect(() => {
+        fetchApi();
+    }, []);
 
     if (isLoading || fetchError) {
-        return <span>Loading arena list...({fetchError})</span>;
+        return <LoadingSpinner>({fetchError})</LoadingSpinner>;
     }
-    console.log(arenas);
 
     return (
         <div>
@@ -30,19 +47,16 @@ const ArenaListPage = () => {
                         >
                             Edit
                         </Link>
-                        <Link
-                            to={`/arena/delete/${arena.id}`}
-                            className="btn btn-secondary mx-3 col"
-                        >
-                            Delete
-                        </Link>
+                        <DeleteButton
+                            value="Delete"
+                            url={`/api/arena/${arena.id}`}
+                            navigateTo={0}
+                            className="mx-3 col"
+                        />
                     </div>
                 ))}
             <div>
-                <Link
-                    to={`/arena/create`}
-                    className="btn btn-secondary col"
-                >
+                <Link to={`/arena/create`} className="btn btn-secondary col">
                     Create
                 </Link>
             </div>
