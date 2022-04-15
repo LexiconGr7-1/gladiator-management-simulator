@@ -15,4 +15,14 @@
     <ProjectReference Include="..\Gladiator.Core\Gladiator.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Arena\" />
+    <Folder Include="Battle\" />
+    <Folder Include="Gear\" />
+    <Folder Include="Identity\" />
+    <Folder Include="Player\" />
+    <Folder Include="School\" />
+    <Folder Include="UserProfile\" />
+  </ItemGroup>
+
 </Project>

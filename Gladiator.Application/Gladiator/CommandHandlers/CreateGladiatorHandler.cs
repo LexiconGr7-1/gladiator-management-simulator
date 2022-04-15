@@ -1,10 +1,10 @@
-﻿using Gladiator.Application.Commands.Gladiator;
-using Gladiator.Application.Mappers.Gladiator;
-using Gladiator.Application.Responses.Gladiator;
+﻿using Gladiator.Application.Gladiator.Commands;
+using Gladiator.Application.Gladiator.Responses;
+using Gladiator.Application.Gladiator.Mappers;
 using Gladiator.Core.Repositories;
 using MediatR;
 
-namespace Gladiator.Application.Handlers.CommandHandlers.Gladiator
+namespace Gladiator.Application.Gladiator.CommandHandlers
 {
     public class CreateGladiatorHandler
         : IRequestHandler<CreateGladiatorCommand, GladiatorResponse>

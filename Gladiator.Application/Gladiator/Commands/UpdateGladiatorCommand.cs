@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gladiator.Application.Commands.Gladiator
+namespace Gladiator.Application.Gladiator.Commands
 {
-    internal class DeleteGladiatorCommand
+    public class UpdateGladiatorCommand
     {
+
     }
 }

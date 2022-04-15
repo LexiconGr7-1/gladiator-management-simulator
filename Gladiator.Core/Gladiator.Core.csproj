@@ -6,4 +6,16 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Aggregates\GearAggregate\" />
+    <Folder Include="Aggregates\BattleLogAggregate\" />
+    <Folder Include="Aggregates\UserAggregate\" />
+    <Folder Include="Aggregates\SchoolAggregate\" />
+    <Folder Include="Validators\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
+  </ItemGroup>
+
 </Project>

@@ -1,8 +1,8 @@
-﻿using Gladiator.Application.Queries.Gladiator;
+﻿using Gladiator.Application.Gladiator.Queries;
 using Gladiator.Core.Repositories;
 using MediatR;
 
-namespace Gladiator.Application.Handlers.QueryHandlers.Gladiator
+namespace Gladiator.Application.Gladiator.QueryHandlers
 {
     public class GetAllGladiatorsHandler
         : IRequestHandler<GetAllGladiatorsQuery,

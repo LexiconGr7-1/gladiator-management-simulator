@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 
-namespace Gladiator.Application.Mappers.Gladiator
+namespace Gladiator.Application.Gladiator.Mappers
 {
     public class GladiatorMapper
     {
@@ -11,7 +11,9 @@ namespace Gladiator.Application.Mappers.Gladiator
                 cfg.ShouldMapProperty = p => p.GetMethod.IsPublic || p.GetMethod.IsAssembly;
                 cfg.AddProfile<GladiatorMappingProfile>();
             });
+
             var mapper = config.CreateMapper();
+            
             return mapper;
         });
 

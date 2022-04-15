@@ -1,8 +1,8 @@
-﻿using Gladiator.Application.Responses.Gladiator;
+﻿using Gladiator.Application.Gladiator.Responses;
 using Gladiator.Core.Entities;
 using MediatR;
 
-namespace Gladiator.Application.Commands.Gladiator
+namespace Gladiator.Application.Gladiator.Commands
 {
     public class CreateGladiatorCommand : IRequest<GladiatorResponse>
     {
@@ -10,6 +10,6 @@ namespace Gladiator.Application.Commands.Gladiator
         public string Name { get; set; }
         public int Health { get; set; }
         public int Strength { get; set; }
-        public School Schools { get; set; }
+        public int SchoolId { get; set; }
     }
 }

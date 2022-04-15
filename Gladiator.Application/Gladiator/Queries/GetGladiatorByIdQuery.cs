@@ -1,8 +1,8 @@
 ﻿using MediatR;
 
-namespace Gladiator.Application.Queries.Gladiator
+namespace Gladiator.Application.Gladiator.Queries
 {
-    public class GetAllGladiatorsQuery
+    public class GetGladiatorByIdQuery
         : IRequest<IEnumerable<Core.Entities.Gladiator>>
     {
     }

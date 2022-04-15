@@ -1,8 +1,8 @@
 ﻿using AutoMapper;
-using Gladiator.Application.Commands.Gladiator;
-using Gladiator.Application.Responses.Gladiator;
+using Gladiator.Application.Gladiator.Commands;
+using Gladiator.Application.Gladiator.Responses;
 
-namespace Gladiator.Application.Mappers.Gladiator
+namespace Gladiator.Application.Gladiator.Mappers
 {
     public class GladiatorMappingProfile : Profile
     {

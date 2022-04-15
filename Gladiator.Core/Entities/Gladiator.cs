@@ -7,8 +7,6 @@ namespace Gladiator.Core.Entities
         public int Health { get; set; }
         public int Strength { get; set; }
 
-        public bool OnFightRoster { get; set; }
-
         public int? ArenaId { get; set; }
         public Arena? Arena { get; set; }
 
