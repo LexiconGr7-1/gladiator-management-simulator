@@ -32,7 +32,7 @@ const ArenaListPage = () => {
 
             {arenas &&
                 arenas.map((arena) => (
-                    <div key={arena.id} className="mb-3">
+                    <div key={arena.id} className="row mb-3">
                         <span className="col">{arena.name}</span>
                         <Link
                             to={`/arena/${arena.id}`}

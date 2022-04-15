@@ -1,14 +1,45 @@
-import { useParams } from "react-router-dom";
-import AvailableSchools from "../../Components/arena/edit/AvailableSchools";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+//import AvailableSchools from "../../Components/arena/edit/AvailableSchools";
 import SchoolsInArena from "../../Components/arena/edit/SchoolsInArena";
-import useFetch from "../../hooks/useFetch";
+import LoadingSpinner from "../../Components/LoadingSpinner";
+import useFetchCallback from "../../hooks/useFetchCallback";
+import EditButton from "../../Components/EditButton";
 
 const ArenaEditPage = () => {
     const { id } = useParams();
-    const { isLoading, data: arena, fetchError } = useFetch(`/api/arena/${id}`);
+    const [name, setName] = useState("");
+    const [arenaSchools, setArenaSchools] = useState([]);
+
+    // get callback and state
+    const {
+        isLoading,
+        data: arena,
+        fetchError,
+        fetchApi,
+    } = useFetchCallback(
+        `/api/arena/${id}`,
+        "GET",
+        { "Content-Type": "application/json" },
+        null,
+        null
+    );
+
+    // fetch gladiator
+    useEffect(() => {
+        fetchApi();
+    }, [id]);
+
+    // set states
+    useEffect(() => {
+        if (arena) {
+            setName(arena.name);
+            setArenaSchools(arena.schools);
+        }
+    }, [arena, id]);
 
     if (isLoading || fetchError) {
-        return <span>Loading edit arena...({fetchError})</span>;
+        return <LoadingSpinner>({fetchError})</LoadingSpinner>;
     }
 
     return (
@@ -21,15 +52,23 @@ const ArenaEditPage = () => {
                 <input
                     type="text"
                     name="name"
-                    defaultValue={arena.name}
                     className="form-control mb-3"
+                    required
+                    defaultValue={arena.name}
+                    onChange={(e) => setName(e.target.value)}
                 />
-                <SchoolsInArena schools={arena.schools} />
-                <AvailableSchools />
-                <button type="submit" className="btn btn-primary">
-                    Update
-                </button>
+                <SchoolsInArena schools={arenaSchools} />
+                <EditButton
+                    value="Update"
+                    url={`/api/arena/${arena.id}`}
+                    navigateTo={"/player"}
+                    body={{ name }}
+                    className="mb-3 col"
+                />
             </form>
+            <Link to="/arena" className="btn btn-secondary mb-3 col">
+                Back
+            </Link>
         </div>
     );
 };
