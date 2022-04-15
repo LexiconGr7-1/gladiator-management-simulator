@@ -64,7 +64,11 @@ const GladiatorCreatePage = () => {
                     </button>
                 )}
                 {isLoading && (
-                    <button disabled className="btn btn-primary mb-3" type="submit">
+                    <button
+                        disabled
+                        className="btn btn-primary mb-3"
+                        type="submit"
+                    >
                         Saving gladiator
                     </button>
                 )}
