@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Core.Test", "Glad
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Application.Test", "Gladiator.Application.Test\Gladiator.Application.Test.csproj", "{9F04B7D9-8FA2-4A14-9B8C-F704820F8748}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Presentation.Api.Test", "Gladiator.Presentation.Api.Test\Gladiator.Presentation.Api.Test.csproj", "{2887E20E-EDAB-4F21-B09B-119F9C6197EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Test", "Gladiator.Infrastructure.Test\Gladiator.Infrastructure.Test.csproj", "{39D5F544-4EC3-48B7-BC53-15474266FC0B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Data", "Gladiator.Infrastructure.Data\Gladiator.Infrastructure.Data.csproj", "{B6551B04-6A78-4651-B6E6-D0D5CC55398E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Presentation.Api.Test", "Gladiator.Presentation.Api.Test\Gladiator.Presentation.Api.Test.csproj", "{2887E20E-EDAB-4F21-B09B-119F9C6197EF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Data.Test", "Gladiator.Infrastructure.Data.Test\Gladiator.Infrastructure.Data.Test.csproj", "{962363B2-D1D2-4EB6-989C-1D02310FDFA6}"
 EndProject

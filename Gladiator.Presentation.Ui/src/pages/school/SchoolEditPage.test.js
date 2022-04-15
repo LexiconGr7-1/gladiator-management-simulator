@@ -1,9 +1,9 @@
 import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import GladiatorEditPage from "./GladiatorEditPage";
+import SchoolEditPage from "./SchoolEditPage";
 
-test("renders gladiator edit page", () => {
-    render(<GladiatorEditPage />, { wrapper: BrowserRouter });
+test("renders school edit page", () => {
+    render(<SchoolEditPage />, { wrapper: BrowserRouter });
     const linkElement = screen.getByText(/Update|Loading.../i);
     expect(linkElement).toBeInTheDocument();
 });
