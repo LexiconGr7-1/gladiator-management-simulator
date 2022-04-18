@@ -9,9 +9,6 @@
   <ItemGroup>
     <Folder Include="Aggregates\GearAggregate\" />
     <Folder Include="Aggregates\BattleLogAggregate\" />
-    <Folder Include="Aggregates\UserAggregate\" />
-    <Folder Include="Aggregates\SchoolAggregate\" />
-    <Folder Include="Validators\" />
   </ItemGroup>
 
   <ItemGroup>

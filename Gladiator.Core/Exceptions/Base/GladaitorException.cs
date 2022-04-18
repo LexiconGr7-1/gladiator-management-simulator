@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gladiator.Core.Exceptions.Base
 {
-    public class GladaitorException : Exception
+    public abstract class GladaitorException : Exception
     {
         protected GladaitorException(string message) : base(message)
         {

@@ -1,6 +1,6 @@
 ﻿namespace Gladiator.Core.Aggregates.ArenaAggregate
 {
-    public class ArenaAggregate
+    public class Arena
     {
     }
 }
