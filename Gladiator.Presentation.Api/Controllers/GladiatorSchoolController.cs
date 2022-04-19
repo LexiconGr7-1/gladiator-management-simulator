@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Gladiator.Presentation.Models;
+using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Gladiator.Presentation.Models;
 namespace Gladiator.Presentation.Api.Controllers
 {
     [ApiController]
@@ -25,8 +25,8 @@ namespace Gladiator.Presentation.Api.Controllers
                 Health = 2
             },
         };
-static List<Gladiator.Presentation.Models.Gladiator> gladiators2 = new()
-         { 
+        static List<Gladiator.Presentation.Models.Gladiator> gladiators2 = new()
+        {
             new Gladiator.Presentation.Models.Gladiator
             {
                 Name = "Gladiator 3",
@@ -41,7 +41,7 @@ static List<Gladiator.Presentation.Models.Gladiator> gladiators2 = new()
                 Strength = 4,
                 Health = 4
             },
-            };
+        };
         static List<Gladiator.Presentation.Models.Gladiator> gladiators3 = new()
         {
             new Gladiator.Presentation.Models.Gladiator
@@ -60,7 +60,7 @@ static List<Gladiator.Presentation.Models.Gladiator> gladiators2 = new()
             },
         };
         static List<Gladiator.Presentation.Models.Gladiator> gladiators4 = new()
-        { 
+        {
             new Gladiator.Presentation.Models.Gladiator
             {
                 Name = "Gladiator 7",
@@ -90,16 +90,15 @@ static List<Gladiator.Presentation.Models.Gladiator> gladiators2 = new()
                 Health = 10
             }
         };
-      
 
-        private readonly List<School> schools = new()
+        private static List<School> schools = new()
         {
             new School
             {
                 Name = "School 1",
                 Id = 1,
-                PlayerID = 1,  
-                Gladiators=gladiators1,
+                PlayerID = 1,
+                Gladiators = gladiators1,
             },
             new School
             {
@@ -122,9 +121,9 @@ static List<Gladiator.Presentation.Models.Gladiator> gladiators2 = new()
                 PlayerID = 4,
                 Gladiators = gladiators4,
             },
-          
+
         };
-       
+
         [HttpGet("{id:int}")]
         public async Task<IActionResult> GetSchool(int id)
         {
@@ -149,18 +148,23 @@ static List<Gladiator.Presentation.Models.Gladiator> gladiators2 = new()
         public async Task<IActionResult> CreateSchool(School school)
         {
             school.Id = (from g in schools
-                            select g.Id).Max() + 1;
+                         select g.Id).Max() + 1;
             school.PlayerID = (from g in schools
-                         select g.PlayerID).Max() + 1;
-            foreach (Models.Gladiator y in school.Gladiators)
+                               select g.PlayerID).Max() + 1;
+
+            if(school.Gladiators != null)
             {
-                foreach (School x in schools)
+                foreach (Models.Gladiator y in school.Gladiators)
                 {
-                    int a = x.Gladiators.FindIndex(g => g.Id == y.Id);
-                    if (a > -1)
-                    { return BadRequest(); }
+                    foreach (School x in schools)
+                    {
+                        int a = x.Gladiators.FindIndex(g => g.Id == y.Id);
+                        if (a > -1)
+                        { return BadRequest(); }
+                    }
                 }
             }
+
             schools.Add(school);
 
             string jsonString = JsonConvert.SerializeObject(schools);
@@ -181,7 +185,7 @@ static List<Gladiator.Presentation.Models.Gladiator> gladiators2 = new()
                 return BadRequest();
 
             int index = schools.FindIndex(x => x.Id == id);
-            
+
             schoolToUpdate.Name = school.Name;
             schoolToUpdate.PlayerID = school.PlayerID;
             foreach (Models.Gladiator x in school.Gladiators)

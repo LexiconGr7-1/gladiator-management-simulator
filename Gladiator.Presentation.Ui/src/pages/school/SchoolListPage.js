@@ -1,9 +1,26 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import useFetchCallback from "../../hooks/useFetchCallback";
+import DeleteButton from "../../Components/DeleteButton";
 import LoadingSpinner from "../../Components/LoadingSpinner";
 
 const SchoolListPage = () => {
-    const { isLoading, data: schools, fetchError } = useFetch("/api/school");
+    const {
+        isLoading,
+        data: schools,
+        fetchError,
+        fetchApi,
+    } = useFetchCallback(
+        "/api/school",
+        "GET",
+        { "Content-Type": "application/json" },
+        null,
+        null
+    );
+
+    useEffect(() => {
+        fetchApi();
+    }, []);
 
     if (isLoading || fetchError) {
         return <LoadingSpinner>({fetchError})</LoadingSpinner>;
@@ -15,7 +32,7 @@ const SchoolListPage = () => {
 
             {schools &&
                 schools.map((school) => (
-                    <div key={school.id} className="mb-3">
+                    <div key={school.id} className="row mb-3">
                         <span className="col">{school.name}</span>
                         <Link
                             to={`/school/${school.id}`}
@@ -30,14 +47,17 @@ const SchoolListPage = () => {
                         >
                             Edit
                         </Link>
-                        <Link
-                            to={`/school/delete/${school.id}`}
-                            className="btn btn-secondary mx-3 col"
-                        >
-                            Delete
-                        </Link>
+                        <DeleteButton
+                            value="Delete"
+                            url={`/api/school/${school.id}`}
+                            navigateTo={0}
+                            className="mx-3 col"
+                        />
                     </div>
                 ))}
+            <Link to={`/school/create`} className="btn btn-secondary col">
+                Create
+            </Link>
         </div>
     );
 };
