@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-//import AvailableSchools from "../../Components/arena/edit/AvailableSchools";
+import AvailableSchools from "../../Components/arena/edit/AvailableSchools";
 import SchoolsInArena from "../../Components/arena/edit/SchoolsInArena";
 import LoadingSpinner from "../../Components/LoadingSpinner";
 import useFetchCallback from "../../hooks/useFetchCallback";
@@ -58,10 +58,11 @@ const ArenaEditPage = () => {
                     onChange={(e) => setName(e.target.value)}
                 />
                 <SchoolsInArena schools={arenaSchools} />
+                <AvailableSchools />
                 <EditButton
                     value="Update"
                     url={`/api/arena/${arena.id}`}
-                    navigateTo={"/player"}
+                    navigateTo={"/arena"}
                     body={{ name }}
                     className="mb-3 col"
                 />

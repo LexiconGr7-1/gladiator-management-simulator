@@ -3,8 +3,8 @@ import Footer from "./Footer";
 
 function Layout(props) {
     const MB = {
-        "margin-bottom": "8rem"
-    }
+        marginBottom: "8rem",
+    };
     return (
         <div className="container">
             <Header />

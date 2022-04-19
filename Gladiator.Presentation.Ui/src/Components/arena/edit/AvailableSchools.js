@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import useFetchCallback from "../../../hooks/useFetchCallback";
+import Checkbox from "../../Checkbox";
 import LoadingSpinner from "../../LoadingSpinner";
 
 const AvailableSchools = () => {
@@ -20,6 +21,11 @@ const AvailableSchools = () => {
         fetchApi();
     }, []);
 
+    const handleCheckboxChange = (e) => {
+        var obj = { schoolId: e.target.value, checkedValue: e.target.checked };
+        console.log(obj);
+    };
+
     if (isLoading || fetchError) {
         return <LoadingSpinner>({fetchError})</LoadingSpinner>;
     }
@@ -27,9 +33,18 @@ const AvailableSchools = () => {
     return (
         <div className="my-3">
             <h5>Available schools</h5>
-            {schools.map((school) => (
-                <div key={school.id}>{school.name}</div>
-            ))}
+            {schools &&
+                schools.map((school) => (
+                    <div key={school.id}>
+                        <Checkbox
+                            checkboxName="schools"
+                            checkboxValue={school.id}
+                            handleCheckboxChange={handleCheckboxChange}
+                            checkboxChecked={false}
+                        />
+                        {school.name}
+                    </div>
+                ))}
         </div>
     );
 };

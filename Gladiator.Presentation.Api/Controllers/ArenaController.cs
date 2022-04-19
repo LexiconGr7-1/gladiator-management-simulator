@@ -96,11 +96,11 @@ namespace Gladiator.Presentation.Api.Controllers
             if (arenaToUpdate == null)
                 return BadRequest();
 
-            if (SchoolInOtherArena(arena))
-                return BadRequest("School is in other arena");
-
-            if (GladiatorInOtherSchool(arena))
-                return BadRequest("Gladiator in other school");
+            //if (SchoolInOtherArena(arena))
+            //    return BadRequest("School is in other arena");
+            //
+            //if (GladiatorInOtherSchool(arena))
+            //    return BadRequest("Gladiator in other school");
 
             arenaToUpdate.Name = arena.Name;
             arenaToUpdate.Schools = arenaToUpdate.Schools.Concat(arena.Schools).ToList();

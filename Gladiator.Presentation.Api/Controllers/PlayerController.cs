@@ -20,7 +20,8 @@ namespace Gladiator.Presentation.Api.Controllers
             new Models.Gladiator { Id = 7, Name = "Gladiator 7", Health = 7, Strength = 7 },
             new Models.Gladiator { Id = 8, Name = "Gladiator 8", Health = 8, Strength = 8 },
             new Models.Gladiator { Id = 9, Name = "Gladiator 9", Health = 9, Strength = 9 },
-            new Models.Gladiator { Id = 10, Name = "Gladiator 10", Health = 10, Strength = 10 }
+            new Models.Gladiator { Id = 10, Name = "Gladiator 10", Health = 10, Strength = 10 },
+            new Models.Gladiator { Id = 11, Name = "Gladiator 11", Health = 11, Strength = 11 }
         };
 
         private static List<School> Schools = new()
@@ -28,6 +29,7 @@ namespace Gladiator.Presentation.Api.Controllers
             new School { Id = 1, Name = "School 1", PlayerID = 1, Gladiators = Gladiators.GetRange(0, 3) },
             new School { Id = 2, Name = "School 2", PlayerID = 2, Gladiators = Gladiators.GetRange(3, 3) },
             new School { Id = 3, Name = "School 3", PlayerID = 3, Gladiators = Gladiators.GetRange(6, 3) },
+            new School { Id = 4, Name = "School 4", PlayerID = 1, Gladiators = Gladiators.GetRange(10, 1) }
         };
 
         private static List<Player> Players = new()
@@ -62,6 +64,78 @@ namespace Gladiator.Presentation.Api.Controllers
             string jsonString = JsonConvert.SerializeObject(Players);
 
             return Ok(jsonString);
+        }
+
+        [HttpGet("school/notinarena")]
+        public async Task<IActionResult> GetSchoolNotInArena()
+        {
+            //Player id from Identity
+            int playerId = 1;
+
+            //var schools =
+            //    from arena in Arenas
+            //    from arenaSchools in arena.Schools
+            //    from school in Schools
+            //    where school.Id == playerId && arenaSchools.Id != school.Id
+            //    select school;
+
+            List<School> schools = new();
+
+            //Arenas.ForEach(arena =>
+            //{
+            //    schools.ForEach(school =>
+            //    {
+            //        if (school.PlayerID == playerId)
+            //        {
+            //            arena.Schools.ForEach(arenaSchool =>
+            //            {
+            //                if(school.Id == arenaSchool.Id)
+            //            });
+            //        }
+            //    });
+            //});
+
+            foreach(var school in Schools)
+            {
+                if(school.PlayerID == playerId)
+                {
+                    if (!SchoolInArena(school))
+                    {
+                        schools.Add(school);
+                    }
+                }
+            }
+
+            string jsonString = JsonConvert.SerializeObject(schools);
+
+            return Ok(jsonString);
+        }
+
+        public bool SchoolInArena(School school)
+        {
+            //Arenas.ForEach(arena =>
+            //{
+            //    arena.Schools.ForEach((arenaSchool) =>
+            //    {
+            //        if (school.Id == arenaSchool.Id)
+            //        {
+            //            return true;
+            //        }
+            //    };
+            //};
+
+            foreach(var arena in Arenas)
+            {
+                foreach (var arenaSchool in arena.Schools)
+                {
+                    if(arenaSchool.Id == school.Id)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         // {"Id":1,"name":"Player5","schools":[{"id":5,"name":"School 5","playerID":5,"Gladiators":[{"id":11,"name":"Gladiator 11","health":11.0,"strength":11.0}]}],"gladiators":[{"id":11,"name":"Gladiator 11","health":11.0,"strength":11.0}]}
