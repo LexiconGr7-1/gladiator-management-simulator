@@ -7,12 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Aggregates\GearAggregate\" />
-    <Folder Include="Aggregates\BattleLogAggregate\" />
+    <PackageReference Include="FluentValidation" Version="10.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="10.4.0" />
+    <Folder Include="Exceptions\" />
   </ItemGroup>
 
 </Project>

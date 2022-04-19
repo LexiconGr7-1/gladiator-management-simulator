@@ -8,8 +8,8 @@ namespace Gladiator.Application.Gladiator.Mappers
     {
         public GladiatorMappingProfile()
         {
-            CreateMap<Core.Entities.Gladiator, GladiatorResponse>().ReverseMap();
-            CreateMap<Core.Entities.Gladiator, CreateGladiatorCommand>().ReverseMap();
+            //CreateMap<Core.Entities.Gladiator, GladiatorResponse>().ReverseMap();
+            //CreateMap<Core.Entities.Gladiator, CreateGladiatorCommand>().ReverseMap();
         }
     }
 }

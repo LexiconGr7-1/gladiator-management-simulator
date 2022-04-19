@@ -9,7 +9,6 @@ namespace Gladiator.Core.Entities
 {
     public class BattleLog : BaseEntity
     {
-        public Gladiator Attacker { get; set; }
-        public Gladiator Defender { get; set; }
+        
     }
 }
