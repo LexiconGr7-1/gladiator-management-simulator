@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useFetchCallback from "../hooks/useFetchCallback";
+import useFetchCallback from "../../hooks/useFetchCallback";
 import { Link } from "react-router-dom";
 
 const GladiatorCreatePage = () => {

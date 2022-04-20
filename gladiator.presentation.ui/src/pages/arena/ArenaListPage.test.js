@@ -4,6 +4,6 @@ import ArenaListPage from "./ArenaListPage";
 
 test("renders player list page", () => {
     render(<ArenaListPage />, { wrapper: BrowserRouter });
-    const linkElement = screen.getByText(/Arena List|Loading arena list...\.\.\./i);
+    const linkElement = screen.getByText(/Arena List|Loading\.\.\./i);
     expect(linkElement).toBeInTheDocument();
 });
