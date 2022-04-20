@@ -11,17 +11,17 @@ namespace Gladiator.Infrastructure.Data.Repositories
         public GladiatorRepository(GladiatorContext gladiatorContext)
             : base(gladiatorContext) {}
 
-        public new async Task<IReadOnlyList<Core.Entities.Gladiator>> GetAllAsync()
+        public new async Task<IList<Core.Entities.Gladiator>> GetAllAsync()
         {
             return await _context.Gladiator
                 .Include(g => g.Stats)
                 .Include(g => g.StatUpdates)
-                .Include(g => g.Arena)
                 .Include(g => g.Gear)
                 .ThenInclude(g => g.StatModifiersPercent)
                 .Include(g => g.Gear)
                 .ThenInclude(g => g.StatModifiersPoints)
                 .Include(g => g.School)
+                .ThenInclude(s => s.Arena)
                 .Include(g => g.Player)
                 .ToListAsync();
         }

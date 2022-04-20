@@ -3,7 +3,7 @@ using Gladiator.Application.Stats.Responses;
 
 namespace Gladiator.Application.Gear.Responses
 {
-    public class GearResponseRelative : GearResponse
+    public class GearResponseRelational : GearResponse
     {
         public StatsResponse StatModifiersPoints { get; set; }
         public StatsResponse StatModifiersPercent { get; set; }

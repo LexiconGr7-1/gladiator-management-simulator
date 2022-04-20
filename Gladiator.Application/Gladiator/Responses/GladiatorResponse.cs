@@ -19,6 +19,5 @@ namespace Gladiator.Application.Gladiator.Responses
         public int Armour { get; set; }
         public int Damage { get; set; }
         public int Strength { get; set; }
-        public int Speed { get; set; }
     }
 }

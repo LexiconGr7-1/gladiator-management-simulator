@@ -5,7 +5,7 @@ using MediatR;
 namespace Gladiator.Application.Gladiator.Queries
 {
     public class GetAllGladiatorsQuery
-        : IRequest<List<Core.Entities.Gladiator>>
+        : IRequest<IList<GladiatorResponseRelational>>
     {
     }
 }

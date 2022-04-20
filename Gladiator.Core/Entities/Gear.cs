@@ -18,6 +18,6 @@ namespace Gladiator.Core.Entities
         public Stats? StatModifiersPercent { get; set; }
 
         public int GladiatorId { get; set; }
-        public Gladiator? Gladiator { get; set; }
+        public Core.Entities.Gladiator? Gladiator { get; set; }
     }
 }

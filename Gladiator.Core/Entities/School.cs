@@ -8,8 +8,8 @@ namespace Gladiator.Core.Entities
         public Player Player { get; set; }
 
         public int ArenaId { get; set; }
-        public Arena Arena { get; set; }
+        public Arena? Arena { get; set; }
 
-        public ICollection<Gladiator> Gladiators { get; set; }
+        public ICollection<Core.Entities.Gladiator>? Gladiators { get; set; }
     }
 }

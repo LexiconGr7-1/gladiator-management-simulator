@@ -3,8 +3,7 @@ using MediatR;
 
 namespace Gladiator.Application.Gladiator.Commands
 {
-    public class CreateGladiatorCommand : IRequest<GladiatorResponseRelatives>
+    public class CreateGladiatorCommand : IRequest<GladiatorResponseRelational>
     {
-        
     }
 }

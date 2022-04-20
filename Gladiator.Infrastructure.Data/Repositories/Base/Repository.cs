@@ -20,7 +20,7 @@ namespace Gladiator.Infrastructure.Data.Repositories.Base
             return entity;
         }
 
-        public async Task<IReadOnlyList<T>> GetAllAsync()
+        public async Task<IList<T>> GetAllAsync()
         {
             return await _context.Set<T>().ToListAsync();
         }

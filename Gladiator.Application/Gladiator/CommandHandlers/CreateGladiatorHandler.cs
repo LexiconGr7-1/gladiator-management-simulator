@@ -7,7 +7,7 @@ using MediatR;
 namespace Gladiator.Application.Gladiator.CommandHandlers
 {
     public class CreateGladiatorHandler
-        : IRequestHandler<CreateGladiatorCommand, GladiatorResponseRelatives>
+        : IRequestHandler<CreateGladiatorCommand, GladiatorResponseRelational>
     {
         private readonly IGladiatorRepository _gladiatorRepository;
 
@@ -16,17 +16,17 @@ namespace Gladiator.Application.Gladiator.CommandHandlers
             _gladiatorRepository = gladiatorRepository;
         }
 
-        public async Task<GladiatorResponseRelatives> Handle(
+        public async Task<GladiatorResponseRelational> Handle(
             CreateGladiatorCommand request,
             CancellationToken cancellationToken)
         {
             var gladiatorEntity = GladiatorMapper.Mapper.Map<Core.Entities.Gladiator>(request);
 
-            if (gladiatorEntity is null)
+            if (gladiatorEntity == null)
                 throw new ApplicationException("Issue with mapper");
 
             var newGladiator = await _gladiatorRepository.AddAsync(gladiatorEntity);
-            var gladiatorResponse = GladiatorMapper.Mapper.Map<GladiatorResponseRelatives>(newGladiator);
+            var gladiatorResponse = GladiatorMapper.Mapper.Map<GladiatorResponseRelational>(newGladiator);
 
             return gladiatorResponse;
         }

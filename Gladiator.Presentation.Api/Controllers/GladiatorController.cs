@@ -28,15 +28,14 @@ namespace Gladiator.Presentation.Api.Controllers
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<List<Core.Entities.Gladiator>> GetAllGladiators()
+        public async Task<IList<GladiatorResponseRelational>> GetAllGladiators()
         {
             return await _mediator.Send(new GetAllGladiatorsQuery());
         }
 
         [HttpPost("generate/{id}")]
         public async Task<IActionResult> CreateRandomGladiator(
-            int id, 
-            [FromBody] CreateRandomGladiatorCommand createRandomGladiatorCommand)
+            int id, [FromBody] CreateRandomGladiatorCommand createRandomGladiatorCommand)
         {
             return Ok();
         }

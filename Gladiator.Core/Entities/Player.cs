@@ -1,13 +1,16 @@
 ﻿using Gladiator.Core.Entities.Base;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Gladiator.Core.Entities
 {
     public class Player : BaseEntityWithName
     {
-        public ICollection<Arena> OwnedArenas { get; set; } = new List<Arena>();
-        public ICollection<School> Schools { get; set; } = new List<School>();
+        public ICollection<Arena>? OwnedArenas { get; set; }
+        public ICollection<School>? Schools { get; set; }
 
-        public List<Core.Entities.Gladiator> Gladiators =>
-            Schools.SelectMany(s => s.Gladiators).ToList();
+        // derived
+        [NotMapped]
+        public List<Core.Entities.Gladiator>? Gladiators =>
+            Schools?.SelectMany(s => s.Gladiators ?? new List<Gladiator>()).ToList();
     }
 }

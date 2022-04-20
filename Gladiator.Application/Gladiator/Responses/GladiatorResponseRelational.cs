@@ -6,7 +6,7 @@ using Gladiator.Application.Stats.Responses;
 
 namespace Gladiator.Application.Gladiator.Responses
 {
-    public class GladiatorResponseRelatives : GladiatorResponse
+    public class GladiatorResponseRelational : GladiatorResponse
     {
         public StatsResponse Stats { get; set; }
         public StatsResponse StatUpdates { get; set; }

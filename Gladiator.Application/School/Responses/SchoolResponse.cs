@@ -8,6 +8,5 @@ namespace Gladiator.Application.School.Responses
         public string Name { get; set; }
         public int PlayerId { get; set; }
         public int ArenaId { get; set; }
-        public List<GladiatorResponse> Gladiators { get; set; }
     }
 }
