@@ -1,4 +1,4 @@
-<h1>Gkadiator Game</h1>
+<h1>Gladiator Game</h1>
 <ul>
   <li>What was your motivation?</li>
   <li>What did you learn?</li>
