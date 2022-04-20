@@ -63,11 +63,15 @@ namespace Gladiator.Presentation.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateArena(Arena arena)
         {
-            if (SchoolInOtherArena(arena))
-                return BadRequest("School is in other arena");
 
-            if (GladiatorInOtherSchool(arena))
-                return BadRequest("Gladiator in other school");
+            if (arena.Schools != null)
+            {
+                if (GladiatorInOtherSchool(arena))
+                    return BadRequest("Gladiator in other school");
+
+                if (SchoolInOtherArena(arena))
+                    return BadRequest("School is in other arena");
+            }
 
             arena.Id = (from g in arenas
                         select g.Id).Max() + 1;
@@ -92,11 +96,11 @@ namespace Gladiator.Presentation.Api.Controllers
             if (arenaToUpdate == null)
                 return BadRequest();
 
-            if (SchoolInOtherArena(arena))
-                return BadRequest("School is in other arena");
-
-            if (GladiatorInOtherSchool(arena))
-                return BadRequest("Gladiator in other school");
+            //if (SchoolInOtherArena(arena))
+            //    return BadRequest("School is in other arena");
+            //
+            //if (GladiatorInOtherSchool(arena))
+            //    return BadRequest("Gladiator in other school");
 
             arenaToUpdate.Name = arena.Name;
             arenaToUpdate.Schools = arenaToUpdate.Schools.Concat(arena.Schools).ToList();
