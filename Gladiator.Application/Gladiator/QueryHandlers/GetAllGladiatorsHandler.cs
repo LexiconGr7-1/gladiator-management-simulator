@@ -1,12 +1,13 @@
 ﻿using Gladiator.Application.Gladiator.Queries;
+using Gladiator.Application.Gladiator.Responses;
 using Gladiator.Core.Repositories;
 using MediatR;
 
 namespace Gladiator.Application.Gladiator.QueryHandlers
 {
-    public class GetAllGladiatorsHandler
-        : IRequestHandler<GetAllGladiatorsQuery,
-            IEnumerable<Core.Entities.Gladiator>>
+    public class GetAllGladiatorsHandler : IRequestHandler<
+            GetAllGladiatorsQuery,
+            List<Core.Entities.Gladiator>>
     {
         private readonly IGladiatorRepository _gladiatorRepository;
 
@@ -15,11 +16,11 @@ namespace Gladiator.Application.Gladiator.QueryHandlers
             _gladiatorRepository = gladiatorRepository;
         }
 
-        public async Task<IEnumerable<Core.Entities.Gladiator>> Handle(
+        public async Task<List<Core.Entities.Gladiator>> Handle(
             GetAllGladiatorsQuery request,
             CancellationToken cancellationToken)
         {
-            return await _gladiatorRepository.GetAllAsync();
+            return (List<Core.Entities.Gladiator>) await _gladiatorRepository.GetAllAsync();
         }
     }
 }

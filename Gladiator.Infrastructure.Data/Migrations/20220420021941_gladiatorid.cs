@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Gladiator.Infrastructure.Data.Migrations
 {
-    public partial class Initital : Migration
+    public partial class gladiatorid : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -119,9 +119,8 @@ namespace Gladiator.Infrastructure.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Health = table.Column<int>(type: "int", nullable: false),
                     Experience = table.Column<int>(type: "int", nullable: false),
-                    TotalExperience = table.Column<int>(type: "int", nullable: false),
                     StatsId = table.Column<int>(type: "int", nullable: false),
-                    StatUpdatesCountId = table.Column<int>(type: "int", nullable: false),
+                    StatUpdatesId = table.Column<int>(type: "int", nullable: false),
                     ArenaId = table.Column<int>(type: "int", nullable: false),
                     SchoolId = table.Column<int>(type: "int", nullable: false),
                     PlayerId = table.Column<int>(type: "int", nullable: false),
@@ -149,19 +148,17 @@ namespace Gladiator.Infrastructure.Data.Migrations
                         column: x => x.SchoolId,
                         principalTable: "School",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_Gladiator_Stats_StatsId",
                         column: x => x.StatsId,
                         principalTable: "Stats",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Gladiator_Stats_StatUpdatesCountId",
-                        column: x => x.StatUpdatesCountId,
+                        name: "FK_Gladiator_Stats_StatUpdatesId",
+                        column: x => x.StatUpdatesId,
                         principalTable: "Stats",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -175,8 +172,8 @@ namespace Gladiator.Infrastructure.Data.Migrations
                     Durability = table.Column<int>(type: "int", nullable: false),
                     Slots = table.Column<int>(type: "int", nullable: false),
                     Weight = table.Column<int>(type: "int", nullable: false),
-                    StatModifiersPointsId = table.Column<int>(type: "int", nullable: true),
-                    StatModifiersPercentId = table.Column<int>(type: "int", nullable: true),
+                    StatModifiersPointsId = table.Column<int>(type: "int", nullable: false),
+                    StatModifiersPercentId = table.Column<int>(type: "int", nullable: false),
                     GladiatorId = table.Column<int>(type: "int", nullable: false),
                     CreatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     UpdatedAt = table.Column<DateTime>(type: "datetime2", nullable: false),
@@ -203,6 +200,42 @@ namespace Gladiator.Infrastructure.Data.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.InsertData(
+                table: "Arena",
+                columns: new[] { "Id", "CreatedAt", "Name", "UpdatedAt" },
+                values: new object[] { 1, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1304), "Arena 1", new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1304) });
+
+            migrationBuilder.InsertData(
+                table: "Player",
+                columns: new[] { "Id", "CreatedAt", "Name", "UpdatedAt" },
+                values: new object[] { 1, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(863), "Player 1", new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(868) });
+
+            migrationBuilder.InsertData(
+                table: "Stats",
+                columns: new[] { "Id", "Agility", "Constitution", "CreatedAt", "Dexterity", "Intelligence", "Strength", "UpdatedAt" },
+                values: new object[,]
+                {
+                    { 1, 1, 1, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1384), 1, 1, 1, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1385) },
+                    { 2, 2, 2, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1446), 2, 2, 2, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1446) },
+                    { 3, 3, 3, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1448), 3, 3, 3, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1448) },
+                    { 4, 4, 4, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1450), 4, 4, 4, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1450) }
+                });
+
+            migrationBuilder.InsertData(
+                table: "School",
+                columns: new[] { "Id", "ArenaId", "CreatedAt", "Name", "PlayerId", "UpdatedAt" },
+                values: new object[] { 1, 1, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1333), "Arena 1", 1, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1333) });
+
+            migrationBuilder.InsertData(
+                table: "Gladiator",
+                columns: new[] { "Id", "ArenaId", "CreatedAt", "Experience", "Health", "Name", "PlayerId", "SchoolId", "StatUpdatesId", "StatsId", "UpdatedAt" },
+                values: new object[] { 1, 1, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1272), 0, 1, "Gladiator 1", 1, 1, 2, 1, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1273) });
+
+            migrationBuilder.InsertData(
+                table: "Gear",
+                columns: new[] { "Id", "Armor", "CreatedAt", "Damage", "Durability", "GladiatorId", "Name", "Slots", "StatModifiersPercentId", "StatModifiersPointsId", "UpdatedAt", "Weight" },
+                values: new object[] { 1, 1, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1360), 1, 1, 1, "Gear 1", 1, 3, 4, new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1361), 1 });
+
             migrationBuilder.CreateIndex(
                 name: "IX_ArenaPlayer_OwnersId",
                 table: "ArenaPlayer",
@@ -216,12 +249,14 @@ namespace Gladiator.Infrastructure.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Gear_StatModifiersPercentId",
                 table: "Gear",
-                column: "StatModifiersPercentId");
+                column: "StatModifiersPercentId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Gear_StatModifiersPointsId",
                 table: "Gear",
-                column: "StatModifiersPointsId");
+                column: "StatModifiersPointsId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Gladiator_ArenaId",
@@ -241,12 +276,14 @@ namespace Gladiator.Infrastructure.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Gladiator_StatsId",
                 table: "Gladiator",
-                column: "StatsId");
+                column: "StatsId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Gladiator_StatUpdatesCountId",
+                name: "IX_Gladiator_StatUpdatesId",
                 table: "Gladiator",
-                column: "StatUpdatesCountId");
+                column: "StatUpdatesId",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_School_ArenaId",

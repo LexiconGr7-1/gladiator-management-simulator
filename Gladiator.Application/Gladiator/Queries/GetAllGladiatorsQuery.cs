@@ -1,9 +1,11 @@
-﻿using MediatR;
+﻿using Gladiator.Application.Gladiator.Responses;
+using Gladiator.Core.Repositories;
+using MediatR;
 
 namespace Gladiator.Application.Gladiator.Queries
 {
     public class GetAllGladiatorsQuery
-        : IRequest<IEnumerable<Core.Entities.Gladiator>>
+        : IRequest<List<Core.Entities.Gladiator>>
     {
     }
 }

@@ -58,6 +58,15 @@ namespace Gladiator.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Arena");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1304),
+                            Name = "Arena 1",
+                            UpdatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1304)
+                        });
                 });
 
             modelBuilder.Entity("Gladiator.Core.Entities.Gear", b =>
@@ -90,10 +99,10 @@ namespace Gladiator.Infrastructure.Data.Migrations
                     b.Property<int>("Slots")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StatModifiersPercentId")
+                    b.Property<int>("StatModifiersPercentId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("StatModifiersPointsId")
+                    b.Property<int>("StatModifiersPointsId")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -106,11 +115,30 @@ namespace Gladiator.Infrastructure.Data.Migrations
 
                     b.HasIndex("GladiatorId");
 
-                    b.HasIndex("StatModifiersPercentId");
+                    b.HasIndex("StatModifiersPercentId")
+                        .IsUnique();
 
-                    b.HasIndex("StatModifiersPointsId");
+                    b.HasIndex("StatModifiersPointsId")
+                        .IsUnique();
 
                     b.ToTable("Gear");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Armor = 1,
+                            CreatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1360),
+                            Damage = 1,
+                            Durability = 1,
+                            GladiatorId = 1,
+                            Name = "Gear 1",
+                            Slots = 1,
+                            StatModifiersPercentId = 3,
+                            StatModifiersPointsId = 4,
+                            UpdatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1361),
+                            Weight = 1
+                        });
                 });
 
             modelBuilder.Entity("Gladiator.Core.Entities.Gladiator", b =>
@@ -143,13 +171,10 @@ namespace Gladiator.Infrastructure.Data.Migrations
                     b.Property<int>("SchoolId")
                         .HasColumnType("int");
 
-                    b.Property<int>("StatUpdatesCountId")
+                    b.Property<int>("StatUpdatesId")
                         .HasColumnType("int");
 
                     b.Property<int>("StatsId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TotalExperience")
                         .HasColumnType("int");
 
                     b.Property<DateTime>("UpdatedAt")
@@ -163,11 +188,29 @@ namespace Gladiator.Infrastructure.Data.Migrations
 
                     b.HasIndex("SchoolId");
 
-                    b.HasIndex("StatUpdatesCountId");
+                    b.HasIndex("StatUpdatesId")
+                        .IsUnique();
 
-                    b.HasIndex("StatsId");
+                    b.HasIndex("StatsId")
+                        .IsUnique();
 
                     b.ToTable("Gladiator");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ArenaId = 1,
+                            CreatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1272),
+                            Experience = 0,
+                            Health = 1,
+                            Name = "Gladiator 1",
+                            PlayerId = 1,
+                            SchoolId = 1,
+                            StatUpdatesId = 2,
+                            StatsId = 1,
+                            UpdatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1273)
+                        });
                 });
 
             modelBuilder.Entity("Gladiator.Core.Entities.Player", b =>
@@ -191,6 +234,15 @@ namespace Gladiator.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Player");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            CreatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(863),
+                            Name = "Player 1",
+                            UpdatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(868)
+                        });
                 });
 
             modelBuilder.Entity("Gladiator.Core.Entities.School", b =>
@@ -224,6 +276,17 @@ namespace Gladiator.Infrastructure.Data.Migrations
                     b.HasIndex("PlayerId");
 
                     b.ToTable("School");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            ArenaId = 1,
+                            CreatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1333),
+                            Name = "Arena 1",
+                            PlayerId = 1,
+                            UpdatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1333)
+                        });
                 });
 
             modelBuilder.Entity("Gladiator.Core.Entities.Stats", b =>
@@ -258,6 +321,52 @@ namespace Gladiator.Infrastructure.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Stats");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Agility = 1,
+                            Constitution = 1,
+                            CreatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1384),
+                            Dexterity = 1,
+                            Intelligence = 1,
+                            Strength = 1,
+                            UpdatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1385)
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Agility = 2,
+                            Constitution = 2,
+                            CreatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1446),
+                            Dexterity = 2,
+                            Intelligence = 2,
+                            Strength = 2,
+                            UpdatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1446)
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Agility = 3,
+                            Constitution = 3,
+                            CreatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1448),
+                            Dexterity = 3,
+                            Intelligence = 3,
+                            Strength = 3,
+                            UpdatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1448)
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Agility = 4,
+                            Constitution = 4,
+                            CreatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1450),
+                            Dexterity = 4,
+                            Intelligence = 4,
+                            Strength = 4,
+                            UpdatedAt = new DateTime(2022, 4, 20, 2, 19, 41, 50, DateTimeKind.Utc).AddTicks(1450)
+                        });
                 });
 
             modelBuilder.Entity("ArenaPlayer", b =>
@@ -284,12 +393,16 @@ namespace Gladiator.Infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("Gladiator.Core.Entities.Stats", "StatModifiersPercent")
-                        .WithMany()
-                        .HasForeignKey("StatModifiersPercentId");
+                        .WithOne("StatModifiersPercent")
+                        .HasForeignKey("Gladiator.Core.Entities.Gear", "StatModifiersPercentId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.HasOne("Gladiator.Core.Entities.Stats", "StatModifiersPoints")
-                        .WithMany()
-                        .HasForeignKey("StatModifiersPointsId");
+                        .WithOne("StatModifiersPoints")
+                        .HasForeignKey("Gladiator.Core.Entities.Gear", "StatModifiersPointsId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
 
                     b.Navigation("Gladiator");
 
@@ -318,16 +431,16 @@ namespace Gladiator.Infrastructure.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Gladiator.Core.Entities.Stats", "StatUpdatesCount")
-                        .WithMany()
-                        .HasForeignKey("StatUpdatesCountId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("Gladiator.Core.Entities.Stats", "StatUpdates")
+                        .WithOne("StatUpdates")
+                        .HasForeignKey("Gladiator.Core.Entities.Gladiator", "StatUpdatesId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.HasOne("Gladiator.Core.Entities.Stats", "Stats")
-                        .WithMany()
-                        .HasForeignKey("StatsId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .WithOne("StatGladiator")
+                        .HasForeignKey("Gladiator.Core.Entities.Gladiator", "StatsId")
+                        .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
 
                     b.Navigation("Arena");
@@ -336,7 +449,7 @@ namespace Gladiator.Infrastructure.Data.Migrations
 
                     b.Navigation("School");
 
-                    b.Navigation("StatUpdatesCount");
+                    b.Navigation("StatUpdates");
 
                     b.Navigation("Stats");
                 });
@@ -382,6 +495,17 @@ namespace Gladiator.Infrastructure.Data.Migrations
             modelBuilder.Entity("Gladiator.Core.Entities.School", b =>
                 {
                     b.Navigation("Gladiators");
+                });
+
+            modelBuilder.Entity("Gladiator.Core.Entities.Stats", b =>
+                {
+                    b.Navigation("StatGladiator");
+
+                    b.Navigation("StatModifiersPercent");
+
+                    b.Navigation("StatModifiersPoints");
+
+                    b.Navigation("StatUpdates");
                 });
 #pragma warning restore 612, 618
         }
