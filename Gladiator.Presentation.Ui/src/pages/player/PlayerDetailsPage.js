@@ -1,15 +1,28 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
 import LoadingSpinner from "../../Components/LoadingSpinner";
+import useFetchCallback from "../../hooks/useFetchCallback";
 
 const PlayerDetailsPage = () => {
     const { id } = useParams();
+
     const {
         isLoading,
         data: player,
         fetchError,
-    } = useFetch(`/api/player/${id}`);
+        fetchApi,
+    } = useFetchCallback(
+        `/api/player/${id}`,
+        "GET",
+        { "Content-Type": "application/json" },
+        null,
+        null
+    );
+
+    useEffect(() => {
+        fetchApi();
+    }, [id]);
 
     if (isLoading || fetchError) {
         return <LoadingSpinner>({fetchError})</LoadingSpinner>;
