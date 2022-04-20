@@ -1,4 +1,4 @@
-﻿using Gladiator.Presentation.Models;
+using Gladiator.Presentation.Models;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 namespace Gladiator.Presentation.Api.Controllers
@@ -233,6 +233,3 @@ namespace Gladiator.Presentation.Api.Controllers
         }
     }
 }
-
-
-
