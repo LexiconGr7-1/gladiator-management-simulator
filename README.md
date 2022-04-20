@@ -1,2 +1,1 @@
-# gladiator-management-simulator
-A gladiator management game.
+<h1>Title</h1>
