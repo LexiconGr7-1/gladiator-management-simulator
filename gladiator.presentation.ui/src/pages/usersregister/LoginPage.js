@@ -1,4 +1,3 @@
-import { Router } from "react-router-dom";
 
 const LoginPage = () => {
 
