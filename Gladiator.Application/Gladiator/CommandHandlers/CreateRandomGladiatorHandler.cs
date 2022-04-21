@@ -32,8 +32,10 @@ namespace Gladiator.Application.Gladiator.CommandHandlers
                 throw new ApplicationException("Could not set data");
 
 
-
-            var generatedGladiator = await RandomizeGladiator(command);
+            // Populate gladiator with random data based on
+            //  pattern gladiator, spread and difficulty 
+            var generatedGladiator = await RandomizeGladiator(
+                newGladiator, patternGladiator, command);
 
             if (generatedGladiator == null)
                 throw new ApplicationException("Could not generate gladiator");
@@ -45,7 +47,7 @@ namespace Gladiator.Application.Gladiator.CommandHandlers
             return gladiatorResponse;
         }
 
-        public async Task<Core.Entities.Gladiator> GenerateRandomGladiator(
+        public async Task<Core.Entities.Gladiator> RandomizeGladiator(
             Core.Entities.Gladiator newGladiator,
             Core.Entities.Gladiator patternGladiator,
             CreateRandomGladiatorCommand options)
