@@ -2,13 +2,13 @@ import { useEffect, useState } from "react";
 import useFetchCallback from "../../hooks/useFetchCallback";
 import LoadingSpinner from "../../Components/LoadingSpinner";
 import GladiatorAccordion from "../../Components/gladiator/GladiatorAccordion";
+import GladiatorOpponents from "../../Components/gladiator/GladiatorOpponents";
 
 const BattlePage = () => {
     //const { gladiatorId, setGladiatorId } = useState();
     //const { gladiatorId, setGladiatorId } = useState();
     const [selectedGladiator, setSelectedGladiator] = useState(0);
-    const [selectedOpponent, setSelectedOpponent] = useState(0);
-    console.log(selectedGladiator);
+    //const [selectedOpponent, setSelectedOpponent] = useState(0);
 
     const {
         isLoading,
@@ -40,7 +40,10 @@ const BattlePage = () => {
                     setSelected={setSelectedGladiator}
                 />
             </div>
-            <div className="col">Opponent {selectedGladiator}</div>
+            <div className="col">
+                <h4>Opponents for {selectedGladiator}</h4>
+                <GladiatorOpponents selectedGladiator={selectedGladiator} />
+            </div>
         </div>
     );
 };

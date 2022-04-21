@@ -1,8 +1,14 @@
-const GladiatorAccordionItem = (props) => {
-    const { gladiator, setSelected } = props;
+import { useState } from "react";
 
-    const handleSelected = () => {
-        setSelected(gladiator.gladiator.id);
+const OpponentAccordionItem = (props) => {
+    const { gladiator, selectedGladiator } = props;
+
+    const [battle, setBattle] = useState("");
+
+    const handleSelected = (name) => {
+        setBattle(
+            `Runs battle between ${selectedGladiator} and Gladiator ${name}!`
+        );
     };
 
     return (
@@ -18,7 +24,9 @@ const GladiatorAccordionItem = (props) => {
                     data-bs-target={`#${"collapse-" + gladiator.gladiator.id}`}
                     aria-expanded="false"
                     aria-controls={"collapse-" + gladiator.gladiator.id}
-                    onClick={handleSelected}
+                    onClick={() => {
+                        handleSelected(gladiator.gladiator.name);
+                    }}
                 >
                     {gladiator.gladiator.name}
                 </button>
@@ -34,10 +42,11 @@ const GladiatorAccordionItem = (props) => {
                         <li>Health: {gladiator.gladiator.health}</li>
                         <li>Strength: {gladiator.gladiator.strength}</li>
                     </ul>
+                    {battle}
                 </div>
             </div>
         </div>
     );
 };
 
-export default GladiatorAccordionItem;
+export default OpponentAccordionItem;

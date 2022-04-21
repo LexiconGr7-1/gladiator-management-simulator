@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import useFetchCallback from "../../hooks/useFetchCallback";
 import LoadingSpinner from "../LoadingSpinner";
-import GladiatorAccordion from "./GladiatorAccordion";
+import OpponentAccordion from "./OpponentAccordion";
 
 const GladiatorOpponents = (props) => {
-    const { opponentId, setSelected } = props;
+    const { selectedGladiator } = props;
 
     const {
         isLoading,
@@ -12,7 +12,7 @@ const GladiatorOpponents = (props) => {
         fetchError,
         fetchApi,
     } = useFetchCallback(
-        "/api/battle/opponents/gladiator/" + opponentId,
+        "/api/battle/opponents/gladiator/" + 1,
         "GET",
         { "Content-Type": "application/json" },
         null,
@@ -28,7 +28,10 @@ const GladiatorOpponents = (props) => {
     }
 
     return (
-        <GladiatorAccordion gladiators={gladiators} setSelceted={setSelected} />
+        <OpponentAccordion
+            gladiators={gladiators}
+            selectedGladiator={selectedGladiator}
+        />
     );
 };
 
