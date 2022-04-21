@@ -19,16 +19,14 @@ namespace Gladiator.Presentation.Api.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<IActionResult> GetGladiator(int id)
+        public async Task<GladiatorFullResponse> GetGladiator(int id)
         {
-
-
-            return Ok();
+            return await _mediator.Send(new GetGladiatorByIdQuery(id));
         }
 
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public async Task<IList<GladiatorResponseRelational>> GetAllGladiators()
+        public async Task<IList<GladiatorFullResponse>> GetAllGladiators()
         {
             return await _mediator.Send(new GetAllGladiatorsQuery());
         }

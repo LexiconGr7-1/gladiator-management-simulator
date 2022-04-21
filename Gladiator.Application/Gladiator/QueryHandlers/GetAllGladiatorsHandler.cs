@@ -8,7 +8,7 @@ namespace Gladiator.Application.Gladiator.QueryHandlers
 {
     public class GetAllGladiatorsHandler : IRequestHandler<
             GetAllGladiatorsQuery,
-            IList<GladiatorResponseRelational>>
+            IList<GladiatorFullResponse>>
     {
         private readonly IGladiatorRepository _gladiatorRepository;
 
@@ -17,7 +17,7 @@ namespace Gladiator.Application.Gladiator.QueryHandlers
             _gladiatorRepository = gladiatorRepository;
         }
 
-        public async Task<IList<GladiatorResponseRelational>> Handle(
+        public async Task<IList<GladiatorFullResponse>> Handle(
             GetAllGladiatorsQuery request,
             CancellationToken cancellationToken)
         {
@@ -26,7 +26,7 @@ namespace Gladiator.Application.Gladiator.QueryHandlers
             if (gladiators == null)
                 throw new ApplicationException("Could not get data");
 
-            var response = GladiatorMapper.Mapper.Map<IList<GladiatorResponseRelational>>(gladiators);
+            var response = GladiatorMapper.Mapper.Map<IList<GladiatorFullResponse>>(gladiators);
 
             if (response == null)
                 throw new ApplicationException("Issue with mapper");

@@ -25,5 +25,20 @@ namespace Gladiator.Infrastructure.Data.Repositories
                 .Include(g => g.Player)
                 .ToListAsync();
         }
+
+        public new async Task<Core.Entities.Gladiator> GetByIdAsync(int id)
+        {
+            return await _context.Gladiator
+            .Include(g => g.Stats)
+            .Include(g => g.StatUpdates)
+            .Include(g => g.Gear)
+            .ThenInclude(g => g.StatModifiersPercent)
+            .Include(g => g.Gear)
+            .ThenInclude(g => g.StatModifiersPoints)
+            .Include(g => g.School)
+            .ThenInclude(s => s.Arena)
+            .Include(g => g.Player)
+            .SingleOrDefaultAsync(g => g.Id == id);
+        }
     }
 }
