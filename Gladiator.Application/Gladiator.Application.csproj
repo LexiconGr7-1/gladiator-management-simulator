@@ -3,7 +3,22 @@
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+    <Nullable>disable</Nullable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="11.0.1" />
+    <PackageReference Include="MediatR" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Gladiator.Core\Gladiator.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Battle\" />
+    <Folder Include="Identity\" />
+    <Folder Include="UserProfile\" />
+  </ItemGroup>
 
 </Project>

@@ -1,6 +1,6 @@
 using Xunit;
 
-namespace Gladiator.Infrastructure.Test
+namespace Gladiator.Infrastructure.ApplicationData.Test
 {
     public class UnitTest1
     {
