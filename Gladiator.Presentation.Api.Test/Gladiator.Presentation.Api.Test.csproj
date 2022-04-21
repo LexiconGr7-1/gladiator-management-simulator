@@ -20,4 +20,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Gladiator.Presentation.Api\Gladiator.Presentation.Api.csproj" />
+  </ItemGroup>
+
 </Project>

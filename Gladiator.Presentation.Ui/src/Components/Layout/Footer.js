@@ -15,10 +15,10 @@ const Footer = () => {
             <div className="footer-content">
                 <div className="footer-box">
                     <div className="footer-item">
-                        <Link to="/">Sign in</Link>
+                        <Link to="/Login">Sign in</Link>
                     </div>
                     <div className="footer-item">
-                        <Link to="/">Sign up</Link>
+                        <Link to="/signup">Sign up</Link>
                     </div>
                 </div>
                 <div className="footer-foot">

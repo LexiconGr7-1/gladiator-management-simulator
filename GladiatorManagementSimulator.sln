@@ -7,8 +7,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Test", "Gladiator
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Core", "Gladiator.Core\Gladiator.Core.csproj", "{E7C25E76-3F16-4D93-80FF-CEF2B388B397}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure", "Gladiator.Infrastructure\Gladiator.Infrastructure.csproj", "{978B3B7B-48DF-4442-8F25-6E2BB0FF29AE}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Application", "Gladiator.Application\Gladiator.Application.csproj", "{6EBD52A7-692A-4946-B81D-573CA4EBC8C3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Presentation.Api", "Gladiator.Presentation.Api\Gladiator.Presentation.Api.csproj", "{36FB3DB0-B959-453C-B0D5-7D1A817F103C}"
@@ -19,9 +17,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Core.Test", "Glad
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Application.Test", "Gladiator.Application.Test\Gladiator.Application.Test.csproj", "{9F04B7D9-8FA2-4A14-9B8C-F704820F8748}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Test", "Gladiator.Infrastructure.Test\Gladiator.Infrastructure.Test.csproj", "{39D5F544-4EC3-48B7-BC53-15474266FC0B}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Presentation.Api.Test", "Gladiator.Presentation.Api.Test\Gladiator.Presentation.Api.Test.csproj", "{2887E20E-EDAB-4F21-B09B-119F9C6197EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Data", "Gladiator.Infrastructure.Data\Gladiator.Infrastructure.Data.csproj", "{B6551B04-6A78-4651-B6E6-D0D5CC55398E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Data.Test", "Gladiator.Infrastructure.Data.Test\Gladiator.Infrastructure.Data.Test.csproj", "{962363B2-D1D2-4EB6-989C-1D02310FDFA6}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Authentication", "Gladiator.Infrastructure.Authentication\Gladiator.Infrastructure.Authentication.csproj", "{E6600F9C-FEF3-44C9-AD66-3A5E07A21AB4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gladiator.Infrastructure.Authentication.Test", "Gladiator.Infrastructure.Authentication.Test\Gladiator.Infrastructure.Authentication.Test.csproj", "{ECAFDE10-4B8B-4FA6-90FF-CDCC7F36FFF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,10 +41,6 @@ Global
 		{E7C25E76-3F16-4D93-80FF-CEF2B388B397}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E7C25E76-3F16-4D93-80FF-CEF2B388B397}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E7C25E76-3F16-4D93-80FF-CEF2B388B397}.Release|Any CPU.Build.0 = Release|Any CPU
-		{978B3B7B-48DF-4442-8F25-6E2BB0FF29AE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{978B3B7B-48DF-4442-8F25-6E2BB0FF29AE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{978B3B7B-48DF-4442-8F25-6E2BB0FF29AE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{978B3B7B-48DF-4442-8F25-6E2BB0FF29AE}.Release|Any CPU.Build.0 = Release|Any CPU
 		{6EBD52A7-692A-4946-B81D-573CA4EBC8C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{6EBD52A7-692A-4946-B81D-573CA4EBC8C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6EBD52A7-692A-4946-B81D-573CA4EBC8C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -63,14 +63,26 @@ Global
 		{9F04B7D9-8FA2-4A14-9B8C-F704820F8748}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F04B7D9-8FA2-4A14-9B8C-F704820F8748}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F04B7D9-8FA2-4A14-9B8C-F704820F8748}.Release|Any CPU.Build.0 = Release|Any CPU
-		{39D5F544-4EC3-48B7-BC53-15474266FC0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{39D5F544-4EC3-48B7-BC53-15474266FC0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{39D5F544-4EC3-48B7-BC53-15474266FC0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{39D5F544-4EC3-48B7-BC53-15474266FC0B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2887E20E-EDAB-4F21-B09B-119F9C6197EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{2887E20E-EDAB-4F21-B09B-119F9C6197EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2887E20E-EDAB-4F21-B09B-119F9C6197EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2887E20E-EDAB-4F21-B09B-119F9C6197EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6551B04-6A78-4651-B6E6-D0D5CC55398E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6551B04-6A78-4651-B6E6-D0D5CC55398E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6551B04-6A78-4651-B6E6-D0D5CC55398E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6551B04-6A78-4651-B6E6-D0D5CC55398E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{962363B2-D1D2-4EB6-989C-1D02310FDFA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{962363B2-D1D2-4EB6-989C-1D02310FDFA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{962363B2-D1D2-4EB6-989C-1D02310FDFA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{962363B2-D1D2-4EB6-989C-1D02310FDFA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E6600F9C-FEF3-44C9-AD66-3A5E07A21AB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6600F9C-FEF3-44C9-AD66-3A5E07A21AB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6600F9C-FEF3-44C9-AD66-3A5E07A21AB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6600F9C-FEF3-44C9-AD66-3A5E07A21AB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECAFDE10-4B8B-4FA6-90FF-CDCC7F36FFF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECAFDE10-4B8B-4FA6-90FF-CDCC7F36FFF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECAFDE10-4B8B-4FA6-90FF-CDCC7F36FFF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECAFDE10-4B8B-4FA6-90FF-CDCC7F36FFF5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

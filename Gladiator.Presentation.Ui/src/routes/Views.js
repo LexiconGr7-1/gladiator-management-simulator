@@ -17,6 +17,9 @@ import ArenaListPage from "../pages/arena/ArenaListPage";
 import ArenaDetailsPage from "../pages/arena/ArenaDetailsPage";
 import ArenaEditPage from "../pages/arena/ArenaEditPage";
 import ArenaCreatePage from "../pages/arena/ArenaCreatePage";
+import LoginPage from "../pages/usersregister/LoginPage";
+import SignupPage from "../pages/usersregister/SignUpPage";
+
 import BattlePage from "../pages/battle/BattlePage";
 const Views = () => {
   return (
@@ -38,6 +41,8 @@ const Views = () => {
       <Route exact path="/arena/:id" element={<ArenaDetailsPage />} />
       <Route exact path="/arena/create" element={<ArenaCreatePage />} />
       <Route exact path="/arena/edit/:id" element={<ArenaEditPage />} />
+      <Route exact path="/login" element={<LoginPage />} />
+      <Route exact path="/signup" element={<SignupPage />} />
       <Route exact path="/battle" element={<BattlePage/>} />
       <Route index element={<LandingPage />} />
       <Route path="*" element={<NotFound />} />
