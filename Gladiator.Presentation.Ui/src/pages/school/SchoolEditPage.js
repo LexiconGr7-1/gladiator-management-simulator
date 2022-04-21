@@ -1,14 +1,38 @@
-import { useParams } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import useFetchCallback from "../../hooks/useFetchCallback";
 import LoadingSpinner from "../../Components/LoadingSpinner";
+import EditButton from "../../Components/EditButton";
 
 const SchoolEditPage = () => {
     const { id } = useParams();
+    const [name, setName] = useState("");
+
+    // get callback and state
     const {
         isLoading,
         data: school,
         fetchError,
-    } = useFetch(`/api/school/${id}`);
+        fetchApi,
+    } = useFetchCallback(
+        `/api/school/${id}`,
+        "GET",
+        { "Content-Type": "application/json" },
+        null,
+        null
+    );
+
+    // fetch gladiator
+    useEffect(() => {
+        fetchApi();
+    }, [id]);
+
+    // set states
+    useEffect(() => {
+        if (school) {
+            setName(school.name);
+        }
+    }, [school, id]);
 
     if (isLoading || fetchError) {
         return <LoadingSpinner>({fetchError})</LoadingSpinner>;
@@ -24,13 +48,22 @@ const SchoolEditPage = () => {
                 <input
                     type="text"
                     name="name"
-                    defaultValue={school.name}
                     className="form-control mb-3"
+                    required
+                    defaultValue={school.name}
+                    onChange={(e) => setName(e.target.value)}
                 />
-                <button type="submit" className="btn btn-primary">
-                    Update
-                </button>
+                <EditButton
+                    value="Update"
+                    url={`/api/school/${school.id}`}
+                    navigateTo={"/school"}
+                    body={{ name }}
+                    className="mb-3 col"
+                />
             </form>
+            <Link to="/school" className="btn btn-secondary mb-3 col">
+                Back
+            </Link>
         </div>
     );
 };

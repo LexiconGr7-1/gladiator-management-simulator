@@ -4,6 +4,6 @@ import ArenaEditPage from "./ArenaEditPage";
 
 test("renders arena edit page", () => {
     render(<ArenaEditPage />, { wrapper: BrowserRouter });
-    const linkElement = screen.getByText(/Update|Loading edit arena.../i);
+    const linkElement = screen.getByText(/Update|Loading.../i);
     expect(linkElement).toBeInTheDocument();
 });

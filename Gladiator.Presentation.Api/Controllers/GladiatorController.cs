@@ -1,12 +1,16 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Gladiator.Presentation;
+
 namespace Gladiator.Presentation.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class GladiatorController : ControllerBase
     {
-        private static readonly List<Models.Gladiator> gladiators = new()
+        private static readonly Random random = new Random();
+
+        private static List<Gladiator.Presentation.Models.Gladiator> gladiators = new()
         {
             new Gladiator.Presentation.Models.Gladiator {Name = "Gladiator 1", Id = 1, Strength = 1, Health = 1},
             new Gladiator.Presentation.Models.Gladiator {Name = "Gladiator 2", Id = 2, Strength = 2, Health = 2},
@@ -41,6 +45,52 @@ namespace Gladiator.Presentation.Api.Controllers
             return Ok(jsonString);
         }
 
+        [HttpGet("generate/{id}")]
+        public async Task<IActionResult> GetRandomGladiator(int id, Difficulty difficulty)
+        {
+            if (id < 1)
+                return BadRequest();
+
+            Models.Gladiator currentGladiator = gladiators.SingleOrDefault(x => x.Id == id);
+
+            if(currentGladiator == null)
+                return BadRequest();
+
+            var minHealth = currentGladiator.Health - Math.Abs(difficulty.Lower);
+            var maxHealth = currentGladiator.Health + difficulty.Upper;
+
+            var minStrength = currentGladiator.Strength - Math.Abs(difficulty.Lower);
+            var maxStrength = currentGladiator.Strength + difficulty.Upper;
+
+            minHealth = minHealth < 0 ? 0 : minHealth;
+            minStrength = minStrength < 0 ? 0 : minStrength;
+
+            maxHealth = maxHealth < 0 ? 0 : maxHealth;
+            maxStrength = maxStrength < 0 ? 0 : maxStrength;
+
+            Models.Gladiator newGladiator = new();
+
+            newGladiator.Id = (from g in gladiators
+                            select g.Id).Max() + 1;
+
+            newGladiator.Name = "New Random Gladiator";
+            newGladiator.Health = random.Next((int)minHealth, (int)maxHealth + 1);
+            newGladiator.Strength = random.Next((int)minStrength, (int)maxStrength + 1);
+
+            gladiators.Add(newGladiator);
+
+            string jsonString = JsonConvert.SerializeObject(newGladiator);
+
+            return Ok(jsonString);
+        }
+
+        public class Difficulty
+        {
+            [JsonProperty("upper")]
+            public int Upper { get; set; }
+            [JsonProperty("lower")]
+            public int Lower { get; set; }
+        }
 
         // json example {"name": "Addicus","strength": 123,"health": 456}
         [HttpPost]
@@ -76,7 +126,7 @@ namespace Gladiator.Presentation.Api.Controllers
 
             gladiators[index] = gladiatorToUpdate;
 
-            string jsonString = JsonConvert.SerializeObject(gladiators);
+            string jsonString = JsonConvert.SerializeObject(gladiatorToUpdate);
 
             return Ok(jsonString);
         }
@@ -94,9 +144,7 @@ namespace Gladiator.Presentation.Api.Controllers
 
             gladiators.RemoveAt(index);
 
-            string jsonString = JsonConvert.SerializeObject(gladiators);
-
-            return Ok(jsonString);
+            return Ok();
         }
     }
 }

@@ -1,20 +1,25 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
-import useFetchCallback from "../hooks/useFetchCallback";
-import LoadingSpinner from "../Components/LoadingSpinner";
+import useFetchCallback from "../../hooks/useFetchCallback";
+import LoadingSpinner from "../../Components/LoadingSpinner";
 
 const GladiatorDetailsPage = () => {
-    const {id} = useParams();
+    const { id } = useParams();
 
-    const { isLoading, data: gladiator, fetchError, fetchApi } = useFetchCallback(
+    const {
+        isLoading,
+        data: gladiator,
+        fetchError,
+        fetchApi,
+    } = useFetchCallback(
         `/api/gladiator/${id}`,
         "GET",
         { "Content-Type": "application/json" },
         null,
         null
     );
-    
+
     useEffect(() => {
         fetchApi();
     }, [id]);
