@@ -4,6 +4,7 @@ import LoadingSpinner from "../../Components/LoadingSpinner";
 
 const BattlePage = () => {
     //const { gladiatorId, setGladiatorId } = useState();
+    //const { gladiatorId, setGladiatorId } = useState();
 
     const {
         isLoading,
