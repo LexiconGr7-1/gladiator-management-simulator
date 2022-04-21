@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import useFetchCallback from "../hooks/useFetchCallback";
+import useFetchCallback from "../../hooks/useFetchCallback";
 import { Link } from "react-router-dom";
-import EditButton from "../Components/EditButton";
+import EditButton from "../../Components/EditButton";
 
 const GladiatorEditPage = () => {
     const { id } = useParams();

@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
-using System.Linq;
-using System.Collections.Generic;
 using Gladiator.Presentation.Models;
+using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 namespace Gladiator.Presentation.Api.Controllers
 {
 
@@ -10,321 +8,228 @@ namespace Gladiator.Presentation.Api.Controllers
     [Route("api/[controller]")]
     public class PlayerController : ControllerBase
     {
-        
-        
-      
-        static List<Models.Gladiator> gladiators1 = new()
+
+        private static List<Models.Gladiator> Gladiators = new()
         {
-            new Models.Gladiator
-            {
-                Name = "Gladiator 1",
-                Id = 1,
-                Strength = 1,
-                Health = 1
-            },
-            new Models.Gladiator
-            {
-                Name = "Gladiator 2",
-                Id = 2,
-                Strength = 2,
-                Health = 2
-            },
-        };
-        static List<Models.Gladiator> gladiators2 = new()
-        {
-            new Models.Gladiator
-            {
-                Name = "Gladiator 3",
-                Id = 3,
-                Strength = 3,
-                Health = 3
-            },
-            new Models.Gladiator
-            {
-                Name = "Gladiator 4",
-                Id = 4,
-                Strength = 4,
-                Health = 4
-            },
+            new Models.Gladiator { Id = 1, Name = "Gladiator 1", Health = 1, Strength = 1 },
+            new Models.Gladiator { Id = 2, Name = "Gladiator 2", Health = 2, Strength = 2 },
+            new Models.Gladiator { Id = 3, Name = "Gladiator 3", Health = 3, Strength = 3 },
+            new Models.Gladiator { Id = 4, Name = "Gladiator 4", Health = 4, Strength = 4 },
+            new Models.Gladiator { Id = 5, Name = "Gladiator 5", Health = 5, Strength = 5 },
+            new Models.Gladiator { Id = 6, Name = "Gladiator 6", Health = 6, Strength = 6 },
+            new Models.Gladiator { Id = 7, Name = "Gladiator 7", Health = 7, Strength = 7 },
+            new Models.Gladiator { Id = 8, Name = "Gladiator 8", Health = 8, Strength = 8 },
+            new Models.Gladiator { Id = 9, Name = "Gladiator 9", Health = 9, Strength = 9 },
+            new Models.Gladiator { Id = 10, Name = "Gladiator 10", Health = 10, Strength = 10 },
+            new Models.Gladiator { Id = 11, Name = "Gladiator 11", Health = 11, Strength = 11 }
         };
 
-        private static List<School> schools1 = new()
+        private static List<School> Schools = new()
         {
-            new School
-            {
-                Name = "School 1",
-                Id = 1,
-                PlayerID = 1,
-                Gladiators = gladiators1,
-            },
-        };
-        private static List<School> schools2 = new()
-        {
-            new School
-            {
-                Name = "School 2",
-                Id = 2,
-                PlayerID = 2,
-                Gladiators = gladiators2,
-            },
-        };
-        private static List<School> schools3 = new()
-        { new School
-        {
-            Name = "School 3",
-            Id = 3,
-            PlayerID = 3,
-            Gladiators = gladiators3,
-        },
-            new School
-            {
-                Name = "School 4",
-                Id = 4,
-                PlayerID = 3,
-                Gladiators = gladiators4,
-            },
-
+            new School { Id = 1, Name = "School 1", PlayerID = 1, Gladiators = Gladiators.GetRange(0, 3) },
+            new School { Id = 2, Name = "School 2", PlayerID = 2, Gladiators = Gladiators.GetRange(3, 3) },
+            new School { Id = 3, Name = "School 3", PlayerID = 3, Gladiators = Gladiators.GetRange(6, 3) },
+            new School { Id = 4, Name = "School 4", PlayerID = 1, Gladiators = Gladiators.GetRange(10, 1) }
         };
 
-        static List<Models.Gladiator> gladiators3 = new()
+        private static List<Player> Players = new()
         {
-            new Models.Gladiator
-            {
-                Name = "Gladiator 5",
-                Id = 5,
-                Strength = 5,
-                Health = 5
-            },
-            new Models.Gladiator
-            {
-                Name = "Gladiator 6",
-                Id = 6,
-                Strength = 6,
-                Health = 6
-            },
-        };
-        static List<Models.Gladiator> gladiators4 = new()
-        {
-            new Models.Gladiator
-            {
-                Name = "Gladiator 7",
-                Id = 7,
-                Strength = 7,
-                Health = 7
-            },
-            new Models.Gladiator
-            {
-                Name = "Gladiator 8",
-                Id = 8,
-                Strength = 8,
-                Health = 8
-            },
-            new Models.Gladiator
-            {
-                Name = "Gladiator 9",
-                Id = 9,
-                Strength = 9,
-                Health = 9
-            },
-            new Models.Gladiator
-            {
-                Name = "Gladiator 10",
-                Id = 10,
-                Strength = 10,
-                Health = 10
-            }
-        };
-        static List<Models.Gladiator> gladiators5 = gladiators3.Concat(gladiators4).ToList();
-
-        static List<Player> players = new()
-        {
-            new Player
-            {
-                Name = "Player1",
-                Id = 1,
-                Schools = schools1,
-                Gladiators = gladiators1
-            },
-            new Player
-            {
-                Name = "Player2",
-                Id = 2,
-                Schools = schools2,
-                Gladiators = gladiators2
-            },
-            new Player
-            {
-                Name = "Player3",
-                Id = 3,
-                Schools = schools3,
-                Gladiators = gladiators5
-            }
+            new Player { Id = 1, Name = "Player 1", Gladiators = Gladiators.GetRange(0, 3), Schools = Schools.GetRange(0, 1) },
+            new Player { Id = 2, Name = "Player 2", Gladiators = Gladiators.GetRange(3, 3), Schools = Schools.GetRange(1, 1) },
+            new Player { Id = 3, Name = "Player 3", Gladiators = Gladiators.GetRange(6, 3), Schools = Schools.GetRange(2, 1) }
         };
 
+        private static List<Arena> Arenas = new()
+        {
+            new Arena { Id = 1, Name = "Arena 1", Schools = Schools.GetRange(0, 2) },
+            new Arena { Id = 2, Name = "Arena 2", Schools = Schools.GetRange(2, 1) }
+        };
 
-        static List<Models.Gladiator> gladiators6 = new()
-        {
-            new Models.Gladiator
-            {
-                Name = "Gladiator 11",
-                Id = 11,
-                Strength = 11,
-                Health = 11
-            },
-        };
-        static List<School> schools7 = new()
-        {
-            new School
-            {
-                Name = "School 5",
-                Id = 5,
-                PlayerID = 5,
-                Gladiators = gladiators6,
-            },
-        };
-        static List<School> schools4 = schools1.Concat(schools2).Concat(schools3).Concat(schools7).ToList();
-        static List<Models.Gladiator> gladiators7 = gladiators1.Concat(gladiators2).Concat(gladiators5).Concat(gladiators6).ToList();
-       
         [HttpGet("{id:int}")]
-    public async Task<IActionResult> GetPlayer(int id)
-    {
-        if (id < 1)
-            return BadRequest();
+        public async Task<IActionResult> GetPlayer(int id)
+        {
+            if (id < 1)
+                return BadRequest();
 
-        Player player = players.Find(x => x.Id == id);
-
-        string jsonString = JsonConvert.SerializeObject(player);
-
-        return Ok(jsonString);
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> Getplayers()
-    {
-        string jsonString = JsonConvert.SerializeObject(players);
-
-        return Ok(jsonString);
-        }
-
-       // {"Id":1,"name":"Player5","schools":[{"id":5,"name":"School 5","playerID":5,"Gladiators":[{"id":11,"name":"Gladiator 11","health":11.0,"strength":11.0}]}],"gladiators":[{"id":11,"name":"Gladiator 11","health":11.0,"strength":11.0}]}
-    
-    [HttpPost]
-    public async Task<IActionResult> CreatePlayer(Player player)
-    {
-            player.Id = (from g in players
-                         select g.Id).Max() + 1;
-
-            foreach (Player y in players)
-            { foreach (School x in y.Schools)
-                    foreach (School z in player.Schools)
-                    {
-                        if (x.Id == z.Id)
-                        { return BadRequest(); }
-                    } 
-            }
-            foreach (Player y in players)
-            {
-                foreach (Models.Gladiator x in y.Gladiators)
-                    foreach (Models.Gladiator z in player.Gladiators)
-                    {
-                        if (x.Id == z.Id)
-                        { return BadRequest(); }
-                    }
-            }
-            foreach (School x in player.Schools)
-            { 
-                 if (schools4.FindIndex(g => g.Id == x.Id)<0 )
-                
-                { return BadRequest(); } 
-            }
-            foreach (Models.Gladiator x in player.Gladiators)
-            {
-                 if (gladiators7.FindIndex(g => g.Id == x.Id)<0) 
-              
-                { return BadRequest(); }
-            }
+            Player player = Players.Find(x => x.Id == id);
 
             string jsonString = JsonConvert.SerializeObject(player);
 
             return Ok(jsonString);
-
         }
-               
 
-    // json example {"name": "Addicus","strength": 123,"health": 456}
-    [HttpPut("{id:int}")]
-    public async Task<IActionResult> UpdatePlayer(int id, Player player)
-    {
-        if (id < 1)
-            return BadRequest();
+        [HttpGet]
+        public async Task<IActionResult> Getplayers()
+        {
+            string jsonString = JsonConvert.SerializeObject(Players);
 
-        Player? playerToUpdate = players.FirstOrDefault(g => g.Id == id);
+            return Ok(jsonString);
+        }
 
-        if (playerToUpdate == null)
-            return BadRequest();
+        [HttpGet("school/notinarena")]
+        public async Task<IActionResult> GetSchoolNotInArena()
+        {
+            //Player id from Identity
+            int playerId = 1;
 
-        int index = players.FindIndex(x => x.Id == id);
+            //var schools =
+            //    from arena in Arenas
+            //    from arenaSchools in arena.Schools
+            //    from school in Schools
+            //    where school.Id == playerId && arenaSchools.Id != school.Id
+            //    select school;
 
-        playerToUpdate.Name = player.Name;
+            List<School> schools = new();
 
-            foreach (Player y in players)
+            //Arenas.ForEach(arena =>
+            //{
+            //    schools.ForEach(school =>
+            //    {
+            //        if (school.PlayerID == playerId)
+            //        {
+            //            arena.Schools.ForEach(arenaSchool =>
+            //            {
+            //                if(school.Id == arenaSchool.Id)
+            //            });
+            //        }
+            //    });
+            //});
+
+            foreach(var school in Schools)
             {
-                foreach (School x in y.Schools)
-                    foreach (School z in player.Schools)
+                if(school.PlayerID == playerId)
+                {
+                    if (!SchoolInArena(school))
                     {
-                        if (x.Id == z.Id && y.Id!=player.Id)
-                        { return BadRequest(); }
+                        schools.Add(school);
                     }
+                }
             }
-            foreach (Player y in players)
+
+            string jsonString = JsonConvert.SerializeObject(schools);
+
+            return Ok(jsonString);
+        }
+
+        public bool SchoolInArena(School school)
+        {
+            //Arenas.ForEach(arena =>
+            //{
+            //    arena.Schools.ForEach((arenaSchool) =>
+            //    {
+            //        if (school.Id == arenaSchool.Id)
+            //        {
+            //            return true;
+            //        }
+            //    };
+            //};
+
+            foreach(var arena in Arenas)
             {
-                foreach (Models.Gladiator x in y.Gladiators)
-                    foreach (Models.Gladiator z in player.Gladiators)
+                foreach (var arenaSchool in arena.Schools)
+                {
+                    if(arenaSchool.Id == school.Id)
                     {
-                        if (x.Id == z.Id && y.Id != player.Id)
-                        { return BadRequest(); }
+                        return true;
                     }
+                }
             }
-            foreach (School x in player.Schools)
+
+            return false;
+        }
+
+        // {"Id":1,"name":"Player5","schools":[{"id":5,"name":"School 5","playerID":5,"Gladiators":[{"id":11,"name":"Gladiator 11","health":11.0,"strength":11.0}]}],"gladiators":[{"id":11,"name":"Gladiator 11","health":11.0,"strength":11.0}]}
+
+        [HttpPost]
+        public async Task<IActionResult> CreatePlayer(CreatePlayerDto playerDto)
+        {
+            var newPlayer = new Player();
+
+            newPlayer.Id = (from p in Players
+                            select p.Id).Max() + 1;
+
+            newPlayer.Name = playerDto.Name;
+
+            var newGladiator = new Models.Gladiator
             {
-                if (schools4.FindIndex(g => g.Id == x.Id) < 0)
+                Id = (from g in Gladiators
+                      select g.Id).Max() + 1,
+                Name = playerDto.Gladiator,
+                Health = 10,
+                Strength = 5
+            };
 
-                { return BadRequest(); }
-            }
-            foreach (Models.Gladiator x in player.Gladiators)
+            Gladiators.Add(newGladiator);
+
+            var newSchool = new School
             {
-                if (gladiators7.FindIndex(g => g.Id == x.Id) < 0)
+                Name = playerDto.School,
+                Id = (from s in Schools
+                      select s.Id).Max() + 1,
+                PlayerID = newPlayer.Id,
+                Gladiators = new List<Models.Gladiator> { newGladiator }
+            };
 
-                { return BadRequest(); }
-            }
-            playerToUpdate.Schools = player.Schools;
-            playerToUpdate.Gladiators = player.Gladiators;
-            players[index] = playerToUpdate;
+            Schools.Add(newSchool);
 
-        string jsonString = JsonConvert.SerializeObject(players);
+            newPlayer.Schools = new List<School> { newSchool };
+            newPlayer.Gladiators = new List<Models.Gladiator> { newGladiator };
 
-        return Ok(jsonString);
-    }
+            Players.Add(newPlayer);
 
-    [HttpDelete("{id:int}")]
-    public async Task<IActionResult> DeletePlayer(int id)
-    {
-        if (id < 1)
-            return BadRequest();
+            string jsonString = JsonConvert.SerializeObject(newPlayer);
 
-        int index = players.FindIndex(x => x.Id == id);
+            return Ok(jsonString);
+        }
 
-        if (index == -1)
-            return BadRequest();
+        public class CreatePlayerDto
+        {
+            public string Name { get; set; }
+            public string School { get; set; }
+            public string Gladiator { get; set; }
+        }
 
-        players.RemoveAt(index);
+        // json example {"name": "Addicus","strength": 123,"health": 456}
+        [HttpPut("{id:int}")]
+        public async Task<IActionResult> UpdatePlayer(int id, Player player)
+        {
+            if (id < 1)
+                return BadRequest();
 
-        string jsonString = JsonConvert.SerializeObject(players);
+            Player playerToUpdate = Players.SingleOrDefault(g => g.Id == id);
 
-        return Ok(jsonString);
+            if (playerToUpdate == null)
+                return BadRequest();
+
+            int index = Players.FindIndex(x => x.Id == id);
+
+            playerToUpdate.Name = player.Name;
+            
+            //playerToUpdate.Schools = player.Schools;
+            //playerToUpdate.Gladiators = player.Gladiators;
+            Players[index] = playerToUpdate;
+
+            string jsonString = JsonConvert.SerializeObject(Players);
+
+            return Ok(jsonString);
+        }
+
+        [HttpDelete("{id:int}")]
+        public async Task<IActionResult> DeletePlayer(int id)
+        {
+            if (id < 1)
+                return BadRequest();
+
+            int index = Players.FindIndex(x => x.Id == id);
+
+            if (index == -1)
+                return BadRequest();
+
+            Players.RemoveAt(index);
+
+            string jsonString = JsonConvert.SerializeObject(Players);
+
+            return Ok(jsonString);
+        }
     }
 }
-}
-    
-
-

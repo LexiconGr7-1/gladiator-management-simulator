@@ -26,6 +26,12 @@ const TopNavBar = () => {
                         <li className="nav-item">
                             <Link className="nav-link" to="/school">School</Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/login">Login</Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/signup">Sign Up</Link>
+                        </li>
                     </ul>
                 </div>
             </div>

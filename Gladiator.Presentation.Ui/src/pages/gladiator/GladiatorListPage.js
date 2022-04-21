@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import DeleteButton from "../Components/DeleteButton";
-import useFetchCallback from "../hooks/useFetchCallback";
-import LoadingSpinner from "../Components/LoadingSpinner";
+import DeleteButton from "../../Components/DeleteButton";
+import useFetchCallback from "../../hooks/useFetchCallback";
+import LoadingSpinner from "../../Components/LoadingSpinner";
 
 const GladiatorListPage = () => {
     const {

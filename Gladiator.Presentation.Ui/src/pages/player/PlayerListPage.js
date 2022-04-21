@@ -1,9 +1,26 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import useFetch from "../../hooks/useFetch";
+import DeleteButton from "../../Components/DeleteButton";
 import LoadingSpinner from "../../Components/LoadingSpinner";
+import useFetchCallback from "../../hooks/useFetchCallback";
 
 const PlayerListPage = () => {
-    const { isLoading, data: players, fetchError } = useFetch("/api/player");
+    const {
+        isLoading,
+        data: players,
+        fetchError,
+        fetchApi,
+    } = useFetchCallback(
+        "/api/player",
+        "GET",
+        { "Content-Type": "application/json" },
+        null,
+        null
+    );
+
+    useEffect(() => {
+        fetchApi();
+    }, []);
 
     if (isLoading || fetchError) {
         return <LoadingSpinner>({fetchError})</LoadingSpinner>;
@@ -30,14 +47,19 @@ const PlayerListPage = () => {
                         >
                             Edit
                         </Link>
-                        <Link
-                            to={`/player/delete/${player.Id}`}
-                            className="btn btn-secondary mx-3 col"
-                        >
-                            Delete
-                        </Link>
+                        <DeleteButton
+                            value="Delete"
+                            url={`/api/player/${player.Id}`}
+                            navigateTo={0}
+                            className="mx-3 col"
+                        />
                     </div>
                 ))}
+            <div>
+                <Link to={`/player/create`} className="btn btn-secondary col">
+                    Create
+                </Link>
+            </div>
         </div>
     );
 };
