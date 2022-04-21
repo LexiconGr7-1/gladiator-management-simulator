@@ -38,7 +38,7 @@ namespace Gladiator.Application.Gladiator.CommandHandlers
             if (generatedGladiator == null)
                 throw new ApplicationException("Could not generate gladiator");
 
-            newGladiator = await _gladiatorRepository.UpAsync(generatedGladiator);
+            newGladiator = await _gladiatorRepository.UpdateAsync(generatedGladiator);
 
             var gladiatorResponse = GladiatorMapper.Mapper.Map<GladiatorFullResponse>(newGladiator);
 
