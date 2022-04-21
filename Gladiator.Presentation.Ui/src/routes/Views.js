@@ -19,8 +19,8 @@ import ArenaEditPage from "../pages/arena/ArenaEditPage";
 import ArenaCreatePage from "../pages/arena/ArenaCreatePage";
 import LoginPage from "../pages/usersregister/LoginPage";
 import SignupPage from "../pages/usersregister/SignUpPage";
-
 import BattlePage from "../pages/battle/BattlePage";
+
 const Views = () => {
   return (
     <Routes>
