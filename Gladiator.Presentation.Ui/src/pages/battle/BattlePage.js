@@ -16,7 +16,7 @@ const BattlePage = () => {
         fetchError,
         fetchApi,
     } = useFetchCallback(
-        `/api/battle/roster/player/${1}`,
+        `/api/battle/roster/player/${4}`,
         "GET",
         { "Content-Type": "application/json" },
         null,
@@ -41,8 +41,19 @@ const BattlePage = () => {
                 />
             </div>
             <div className="col">
-                <h4>Opponents for {selectedGladiator}</h4>
-                <GladiatorOpponents selectedGladiator={selectedGladiator} />
+                {selectedGladiator == 0 ? (
+                    <>
+                        <h4>Opponents</h4>
+                        <p>No opponents yet! Select a gladiator!</p>
+                    </>
+                ) : (
+                    <>
+                        <h4>Opponents for Gladiator {selectedGladiator}</h4>
+                        <GladiatorOpponents
+                            selectedGladiator={selectedGladiator}
+                        />
+                    </>
+                )}
             </div>
         </div>
     );

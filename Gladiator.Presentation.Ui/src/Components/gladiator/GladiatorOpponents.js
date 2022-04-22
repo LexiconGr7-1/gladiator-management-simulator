@@ -12,7 +12,7 @@ const GladiatorOpponents = (props) => {
         fetchError,
         fetchApi,
     } = useFetchCallback(
-        "/api/battle/opponents/gladiator/" + 1,
+        "/api/battle/opponents/gladiator/" + selectedGladiator,
         "GET",
         { "Content-Type": "application/json" },
         null,
